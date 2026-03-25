@@ -1,5 +1,9 @@
-SUURIM ÜLLATUS: Nelja meeskonna liikme asemel oli kohtumisele tulnud viis liiget.
+# Meeskonna kokkuvõte - Nädal 0
 
-SOOVITUS TOOMASELE: [1-2 lauset]
+### Tehtud tööd
+* **Süsteemide seadistamine:** Panime püsti GitHubi organisatsiooni, Supabase'i andmebaasi ja NotebookLM-i keskkonna.
+* **Tähelepanek:** Keskkondade seadistamine ja omavaheline ühendamine võttis oodatust kauem aega, kuid nüüd on arvatavasti kõik töövalmis.
 
-PUUDUVAD ANDMED: Rollide jagamisega oli segadus, kuna grupi liikmete arv ei klappinud. Ülesandekaartide juhised olid kohati segased - näiteks ALAÜLESANDE KAART B: Supabase Seadistaja punkt 12. "Tee screenshot tulemustest".
+### Meeskonna info
+* **Koosseis:** Kevin, Eike, Nikita, Krista, Egle.
+* **Püsivus:** Meie meeskond jääb samas koosseisus muutmata programmi lõpuni (11 nädalat).
