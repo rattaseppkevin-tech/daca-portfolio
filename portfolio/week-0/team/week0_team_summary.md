@@ -6,4 +6,3 @@
 
 ### Meeskonna info
 * **Koosseis:** Kevin, Eike, Nikita, Krista, Egle.
-* **Püsivus:** Meie meeskond jääb samas koosseisus muutmata programmi lõpuni (11 nädalat).
