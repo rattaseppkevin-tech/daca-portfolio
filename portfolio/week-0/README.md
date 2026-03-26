@@ -27,7 +27,16 @@ Sel nädalal panime püsti meeskonna koostööks vajalikud tööriistad.
 * **Kuidas sa praegu oma töö faile versioneerid?** Hetkel olen kasutanud õppematerjali pealkirju ja üritanud selle järgi kuidagi loogiliselt läheneda.
 * **Mis juhtub, kui kaks inimest muudavad sama faili samal ajal?** Tekib konflikt – kas üks kirjutab teise töö üle või tekib failist koopia, mida on hiljem raske ühendada.
 
-## 2.3 GitHubi seadistamise kontroll
+## 2.2 GitHubi seadistamise kontroll
 * **Kas sa näed oma muudetud README-d?** Jah, muudatused on nähtavad ja tutvustus on olemas.
 * **Mitu commit'i on sinu repos nüüd?** Olen varasemalt Githubi kasutanud nii, et neid on paarkümmend tükki umbes.
 * **Kui sa vaatad commit'ide ajalugu, kas näed mõlemat muudatust?** Jah.
+
+## 2.4 Conclusions: GitHub kokkuvõte
+* **Mis oli kõige üllatavam Git/GitHub juures?** Kuna olen varem kasutanud neid siis üllatusi polnud veel.
+* **Kuidas erineb commit tavalisest "Save" nupust?** Save on lihtsalt hetkeseisu hoidmine, et töö pooleli ei jääks, aga Commit on ametlik verstapost sinu töö ajaloos, millel on oma nimi ja kuupäev.
+* **Mida tahaksid sessioonis 1 mentorilt küsida?** Kuidas hoida oma portfoolio puhas ja professionaalne, kui ma alles õpin ja teen alguses palju vigu?
+
+## 3.1 Connection: Õige tööriist õigeks tööks
+* **Kas sa oled kunagi kirjutanud midagi pikemat Notepadis? Mis läks?** Jah, olen proovinud lihtsaid märkmeid teha, aga pikema teksti puhul läks sisu segaseks, puudus igasugune vormistamise võimalus ja teksti oli raske lugeda.
+* **Millal sa tundsid, et sul on vaja "paremat tööriista"?** Kui pidevalt järje Notepadis ära kaotasin.
