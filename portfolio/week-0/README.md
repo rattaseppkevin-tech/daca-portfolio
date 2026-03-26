@@ -26,3 +26,8 @@ Sel nädalal panime püsti meeskonna koostööks vajalikud tööriistad.
 * **Kas sul on kunagi juhtunud, et sa tegid faili "lõplikuks", aga pidid siiski muutma?** Jah on ette tulnud sellist asja.
 * **Kuidas sa praegu oma töö faile versioneerid?** Hetkel olen kasutanud õppematerjali pealkirju ja üritanud selle järgi kuidagi loogiliselt läheneda.
 * **Mis juhtub, kui kaks inimest muudavad sama faili samal ajal?** Tekib konflikt – kas üks kirjutab teise töö üle või tekib failist koopia, mida on hiljem raske ühendada.
+
+## 2.3 GitHubi seadistamise kontroll
+* **Kas sa näed oma muudetud README-d?** Jah, muudatused on nähtavad ja tutvustus on olemas.
+* **Mitu commit'i on sinu repos nüüd?** Olen varasemalt Githubi kasutanud nii, et neid on paarkümmend tükki umbes.
+* **Kui sa vaatad commit'ide ajalugu, kas näed mõlemat muudatust?** Jah.
