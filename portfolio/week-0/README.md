@@ -40,3 +40,42 @@ Sel nädalal panime püsti meeskonna koostööks vajalikud tööriistad.
 ## 3.1 Connection: Õige tööriist õigeks tööks
 * **Kas sa oled kunagi kirjutanud midagi pikemat Notepadis? Mis läks?** Jah, olen proovinud lihtsaid märkmeid teha, aga pikema teksti puhul läks sisu segaseks, puudus igasugune vormistamise võimalus ja teksti oli raske lugeda.
 * **Millal sa tundsid, et sul on vaja "paremat tööriista"?** Kui pidevalt järje Notepadis ära kaotasin.
+
+## 3.4 Conclusions: Arenduskeskkonna kokkuvõte
+
+* **Milline tööriist oli kõige lihtsam seadistada?** Kõige lihtsam oli GitHubi konto loomine ja esialgse repositooriumi püstitamine.
+* **Milline oli kõige keerulisem?** Kõige keerulisem oli VS Code-i ühendamine Supabase'iga (SQLTools).
+* **Mida tahaksid sessioonis 1 mentorilt küsida?** Selle teema kohta pole.
+
+## Teadmiste Kontroll (Nädal 0)
+
+**Küsimus 1:** UrbanStyle'i meeskonnal on müügiandmed Excelis. Mis on peamine probleem Exceliga?
+* **Minu vastus:** **C)** Excelis on samaaegselt töötamine raske ja versioonid lähevad segamini.
+
+**Küsimus 2:** Toomas ütleb: "Tee commit." Mida see tähendab?
+* **Minu vastus:** **A)** Salvesta hetkeolukord versioonihaldusesse koos kirjeldusega.
+
+**Küsimus 3:** Milline SQL päring näitab kõiki ridu tabelist products?
+* **Minu vastus:** **D)** SELECT * FROM products;
+
+**Küsimus 4:** Miks on oluline, et su GitHub repositoorium on public (avalik)?
+* **Minu vastus:** **B)** See on su professionaalne portfoolio -- tööandjad tahavad seda näha.
+
+**Küsimus 5:** Anna tahab teada, mitu müügitellimust on tabelis sales_orders. Milline päring on õige?
+* **Minu vastus:** **A)** SELECT COUNT(*) FROM sales_orders;
+
+**Küsimus 6:** Mis vahe on Gitil ja GitHubil?
+* **Git on:** Programm arvutis, mis jälgib muudatusi ja teeb commit'e.
+* **GitHub on:** Pilveteenus ja veebikeskkond, kus hoida ja jagada oma koodi.
+
+**Küsimus 7:** Mida teeb LIMIT 10 SQL päringus?
+* **Minu vastus:** **D)** Piirab tulemuse 10 reaga.
+
+**Küsimus 8:** SELECT 'Tere!' AS sonum, 2 + 3 AS tulemus; tulemus?
+* **Minu vastus:** **C)** Tabeli ühe reaga: sonum = "Tere!", tulemus = 5.
+
+**Küsimus 9:** "Ära kunagi commit'i salasõnasid GitHubi!" Miks?
+* **Minu vastus:** **B)** Sest avalikus repositooriumis on kõik nähtav ja keegi võib kontole ligi pääseda.
+
+**Küsimus 10:** Kirjelda "vertikaalse lahenduse" mõistet ja oma tööriistu.
+* **Minu vastus:** See on terviklik ahel andmete liigutamiseks, et kood turvaliselt pilve saata.
