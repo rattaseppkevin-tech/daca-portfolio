@@ -3,6 +3,7 @@
 Sel nädalal panime püsti meeskonna koostööks vajalikud tööriistad.
 * **Minu tiim:** UrbanStyle - Tooteanalüüsi osakond
 * **Meeskonna repo:** https://github.com/rattaseppkevin-tech/urbanstyle-TOOTE-grupp
+* **Minu portfoolio live-vaade:** [daca-portfolio-five.vercel.app](https://daca-portfolio-five.vercel.app/)
 
 Õppisin, kuidas ühendada GitHubi, Supabase'i ja NotebookLM-i.
 
