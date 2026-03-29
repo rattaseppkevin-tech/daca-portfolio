@@ -53,10 +53,10 @@ LIMIT 20;
 **Reflektsioon:**
 
 * **Mis oli kõige üllatavam, kui sa esimest korda päris andmeid nägid?**
-  __________________________________________________________________________
+> Kui lihtne ja hea on veergude kaupa asju filtreerida.
 
 * **Kuidas erineb SQL Excelist sinu senise kogemuse põhjal?**
-  __________________________________________________________________________
+> Exceliga olen ma väga vähe kokku puutunud ainult andmeid lugenud sealt, aga SQL tundub palju võimsam selliste asjade jaoks.
 
 * **Mida tahaksid sessioonis 1 mentorilt küsida?**
-  __________________________________________________________________________
+> Hetkel mul küsimused puuduvad.
