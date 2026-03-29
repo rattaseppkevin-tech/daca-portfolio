@@ -18,25 +18,25 @@
 
 ### Harjutus 1B: Shu/Ha — muuda malli
 * **Kirjuta oma päring siia (5 väikseimat müüki):**
-SELECT sale_id, total_price AS summa
-FROM sales
-ORDER BY total_price ASC
-LIMIT 5;
+>SELECT sale_id, total_price AS summa
+>FROM sales
+>ORDER BY total_price ASC
+>LIMIT 5;
 
 * **Milline on kõige väiksem müük?** 
-Esimene rida, sale_id 4221 ja summa on -1405.32.
+>Esimene rida, sale_id 4221 ja summa on -1405.32.
 
 * **Kas sa näed 0-väärtusega või negatiivseid müüke?**
-Kuna LIMIT on 5, siis näen ainult 5 kõige väiksemat summat ja nad kõik on miinusega summad.
+>Kuna LIMIT on 5, siis näen ainult 5 kõige väiksemat summat ja nad kõik on miinusega summad.
 
 ---
 
 ### Harjutus 1C: Rakendus — vali ise veerud
 * **Sinu päring Toomase jaoks (kliendi ID, kuupäev, summa – uuemad enne):**
-SELECT customer_id, sale_date, total_price AS summa
-FROM sales
-ORDER BY sale_date DESC
-LIMIT 20;
+>SELECT customer_id, sale_date, total_price AS summa
+>FROM sales
+>ORDER BY sale_date DESC
+>LIMIT 20;
   __________________________________________________________________________
 
 * **Kontrolltabel:**
