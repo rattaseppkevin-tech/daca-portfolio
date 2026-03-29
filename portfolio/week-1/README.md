@@ -43,9 +43,9 @@ LIMIT 20;
   __________________________________________________________________________
 
 * **Kontrolltabel:**
-  - [ ] Minu päring kasutab SELECT-i konkreetsete veergudega (mitte *)
-  - [ ] Minu päring kasutab ORDER BY-d kuupäeva järgi kahanevalt
-  - [ ] Minu päring kasutab LIMIT-it
+  - [x] Minu päring kasutab SELECT-i konkreetsete veergudega (mitte *)
+  - [x] Minu päring kasutab ORDER BY-d kuupäeva järgi kahanevalt
+  - [x] Minu päring kasutab LIMIT-it
 
 ---
 
