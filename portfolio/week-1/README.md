@@ -18,11 +18,12 @@
 
 ### Harjutus 1B: Shu/Ha — muuda malli
 * **Kirjuta oma päring siia (5 väikseimat müüki):**
->SELECT sale_id, total_price AS summa
->FROM sales
->ORDER BY total_price ASC
->LIMIT 5;
-
+```sql
+SELECT sale_id, total_price AS summa
+FROM sales
+ORDER BY total_price ASC
+LIMIT 5;
+```
 * **Milline on kõige väiksem müük?** 
 >Esimene rida, sale_id 4221 ja summa on -1405.32.
 
