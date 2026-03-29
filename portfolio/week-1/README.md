@@ -60,3 +60,12 @@ LIMIT 20;
 
 * **Mida tahaksid sessioonis 1 mentorilt küsida?**
 > Hetkel mul küsimused puuduvad.
+
+---
+
+### 2.1 Connection: Riidekapi filtreerimine
+* **Mitu tingimust sa kontrollid?**
+ > 2 tingimust (tüüp = särk ja värv = sinine).
+
+* **Kas mõlemad peavad olema tõesed?**
+ > Jah, sest kui üks neist on vale, siis tulemus pole see mida me otsime.
