@@ -34,10 +34,12 @@ LIMIT 5;
 
 ### Harjutus 1C: Rakendus — vali ise veerud
 * **Sinu päring Toomase jaoks (kliendi ID, kuupäev, summa – uuemad enne):**
->SELECT customer_id, sale_date, total_price AS summa
->FROM sales
->ORDER BY sale_date DESC
->LIMIT 20;
+```sql
+SELECT customer_id, sale_date, total_price AS summa
+FROM sales
+ORDER BY sale_date DESC
+LIMIT 20;
+```
   __________________________________________________________________________
 
 * **Kontrolltabel:**
