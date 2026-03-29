@@ -1,17 +1,18 @@
 # Nädal 1: SQL Basics
 
 ### Harjutus 1A: Shu — kopeeri ja käivita
+
 * **Päring 1 — Vaata tabelit:**
- > Mitu veergu sa näed? Kirjuta veergude nimed siia:
- > Esimesed 5. Veergude nimed on sale_id, invoice_id, sale_data, customer_id jne.
+  > Mitu veergu sa näed? Kirjuta veergude nimed siia:  
+  > Esimesed 5. Veergude nimed on sale_id, invoice_id, sale_data, customer_id jne.
 
 * **Päring 2 — Vali konkreetsed veerud:**
-  Milline on suurim summa nende 10 rea seas?
-  7. rida ja summaks on 629.96.
+  > Milline on suurim summa nende 10 rea seas?  
+  > 7. rida ja summaks on 629.96.
 
 * **Päring 3 — Sorteeri ja piira:**
-  Milline on kõige suurem müük kogu tabelis?
-  Kuna kasutame DESC funktsiooni, siis esimene rida, sale_id 2407 ja summa on 2170.4.
+  > Milline on kõige suurem müük kogu tabelis?  
+  > Kuna kasutame DESC funktsiooni, siis esimene rida, sale_id 2407 ja summa on 2170.4.
 
 ---
 
