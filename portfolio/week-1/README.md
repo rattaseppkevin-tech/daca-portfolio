@@ -2,8 +2,8 @@
 
 ### Harjutus 1A: Shu — kopeeri ja käivita
 * **Päring 1 — Vaata tabelit:**
-  Mitu veergu sa näed? Kirjuta veergude nimed siia:
-  Esimesed 5. Veergude nimed on sale_id, invoice_id, sale_data, customer_id jne.
+ > Mitu veergu sa näed? Kirjuta veergude nimed siia:
+ > Esimesed 5. Veergude nimed on sale_id, invoice_id, sale_data, customer_id jne.
 
 * **Päring 2 — Vali konkreetsed veerud:**
   Milline on suurim summa nende 10 rea seas?
