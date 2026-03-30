@@ -6,7 +6,7 @@
 
 * Ülesanne: Kopeeri järgmised päringud Supabase SQL Editorisse ja käivita need ükshaaval.
 
-* <u>Päring 1 — Vaata tabelit:</u>
+*  <u>Päring 1 — Vaata tabelit:</u>
 ```sql
 SELECT *
 FROM sales
@@ -225,5 +225,15 @@ SELECT COUNT(DISTINCT sale_id) AS unikaalseid FROM sales;
 > Tulemus: 10118.
 
 * <u>Samm 3: Arvuta duplikaatide arv:</u>
+```sql
+SELECT
+    COUNT(*) AS kokku,
+    COUNT(DISTINCT email) AS unikaalseid_emaile,
+    COUNT(*) - COUNT(DISTINCT email) AS duplikaatseid
+FROM customers;
+```
+>Kas see vastab Toomase hinnangule (5000+)? Ei vastus on 510.
+
+* **Harjutus 3C: Rakendus — uurimisraport**
 
 ---
