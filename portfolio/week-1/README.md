@@ -24,6 +24,7 @@ FROM sales
 ORDER BY total_price ASC
 LIMIT 5;
 ```
+
 * **Milline on kõige väiksem müük?** 
 >Esimene rida, sale_id 4221 ja summa on -1405.32.
 
@@ -72,7 +73,9 @@ LIMIT 20;
 
 ### 2.3 Concrete Practice: WHERE harjutused.
 
-* **Päring 1 - Mitu tellimust on üle 500 euro (eemalda LIMIT, et näha kõiki)?**
+* **Harjutus 2A: Shu — kopeeri ja käivita**
+
+* Päring 1 - Mitu tellimust on üle 500 euro (eemalda LIMIT, et näha kõiki)?
 > Kui limiti eemaldan näen ainult 100 kuna supabase automaatselt limiteerib 100 peale, et kokku ei jookseks. Alumise koodiga sain vastuseks 2499.
 ```sql
 SELECT COUNT(*)
@@ -80,7 +83,7 @@ FROM sales
 WHERE total_price > 500;
 ```
 
-* **Päring 2 - Mitu müüki oli 2024. aasta esimeses kvartalis?**
+* Päring 2 - Mitu müüki oli 2024. aasta esimeses kvartalis?
 > Vastus on 1550.
 ```sql
 SELECT COUNT(*)
@@ -88,10 +91,20 @@ FROM sales
 WHERE sale_date BETWEEN '2024-01-01' AND '2024-03-31'
 ```
 
-* **Päring 3 - Mitu tellimust on ilma kliendi ID-ta?**
+* Päring 3 - Mitu tellimust on ilma kliendi ID-ta?
 > Vastus on 1487.
 ```sql
 SELECT COUNT(*)
 FROM sales
 WHERE customer_id IS NULL;
+```
+* **Harjutus 2B: Shu/Ha — kombineeri tingimusi**
+* Toomas tahab näha kõiki tellimusi, mis vastavad KÕIGILE järgmistele tingimustele:
+* Summa on üle 200 euro
+* Tellimus on tehtud 2024. aastal
+> Vastus on 4233.
+```sql
+SELECT COUNT (*)
+FROM sales
+WHERE total_price > 200 AND sale_date LIKE '%2024%';
 ```
