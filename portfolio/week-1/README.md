@@ -69,3 +69,29 @@ LIMIT 20;
 
 * **Kas mõlemad peavad olema tõesed?**
  > Jah, sest kui üks neist on vale, siis tulemus pole see mida me otsime.
+
+### 2.3 Concrete Practice: WHERE harjutused.
+
+* **Päring 1 - Mitu tellimust on üle 500 euro (eemalda LIMIT, et näha kõiki)?**
+> Kui limiti eemaldan näen ainult 100 kuna supabase automaatselt limiteerib 100 peale, et kokku ei jookseks. Alumise koodiga sain vastuseks 2499.
+```sql
+SELECT COUNT(*)
+FROM sales
+WHERE total_price > 500;
+```
+
+* **Päring 2 - Mitu müüki oli 2024. aasta esimeses kvartalis?**
+> Vastus on 1550.
+```sql
+SELECT COUNT(*)
+FROM sales
+WHERE sale_date BETWEEN '2024-01-01' AND '2024-03-31'
+```
+
+* **Päring 3 - Mitu tellimust on ilma kliendi ID-ta?**
+> Vastus on 1487.
+```sql
+SELECT COUNT(*)
+FROM sales
+WHERE customer_id IS NULL;
+```
