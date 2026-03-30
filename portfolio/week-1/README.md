@@ -226,13 +226,21 @@ SELECT COUNT(DISTINCT sale_id) AS unikaalseid FROM sales;
 
 * <u>Samm 3: Arvuta duplikaatide arv:</u>
 ```sql
+SELECT 
+    COUNT(*) AS kokku, 
+    COUNT(DISTINCT sale_id) AS unikaalseid,
+    COUNT(*) - COUNT(DISTINCT sale_id) AS duplikaatseid
+FROM sales;
+```
+>Kas see vastab Toomase hinnangule (5000+)? Jah vastus on 5116.
+```sql
 SELECT
     COUNT(*) AS kokku,
     COUNT(DISTINCT email) AS unikaalseid_emaile,
     COUNT(*) - COUNT(DISTINCT email) AS duplikaatseid
 FROM customers;
 ```
->Kas see vastab Toomase hinnangule (5000+)? Ei vastus on 510.
+>Duplikaatseid e-maile: 510.
 
 * **Harjutus 3C: Rakendus — uurimisraport**
 
