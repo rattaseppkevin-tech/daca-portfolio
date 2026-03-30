@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT sale_id) AS unikaalseid FROM sales;
