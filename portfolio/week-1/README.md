@@ -6,7 +6,7 @@
 
 * Ülesanne: Kopeeri järgmised päringud Supabase SQL Editorisse ja käivita need ükshaaval.
 
-* <u>Päring 1 — Vaata tabelit:</u>
+*  <u>Päring 1 — Vaata tabelit:</u>
 ```sql
 SELECT *
 FROM sales
