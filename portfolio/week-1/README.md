@@ -4,7 +4,7 @@
 
 ### **Harjutus 1A: Shu — kopeeri ja käivita**
 
-* Ülesanne: Kopeeri järgmised päringud Supabase SQL Editorisse ja käivita need ükshaaval.
+* **Ülesanne: Kopeeri järgmised päringud Supabase SQL Editorisse ja käivita need ükshaaval.**
 
 *  <u>Päring 1 — Vaata tabelit:</u>
 ```sql
@@ -245,9 +245,9 @@ FROM customers;
 ### **Harjutus 3C: Rakendus — uurimisraport**
 
 * **Ülesanne: Toomas tahab ka products tabeli kohta ülevaadet. Kirjuta ise päring, mis näitab:**
- - Toodete koguarv
- - Unikaalsete kategooriate arv
- - Puuduvate hindade arv
+    * Toodete koguarv
+    * Unikaalsete kategooriate arv
+    * Puuduvate hindade arv
 ```sql
 SELECT 
     COUNT(*) AS toodete_koguarv,
@@ -261,5 +261,100 @@ FROM products;
   - [x] Minu päring kasutab COUNT(DISTINCT category) kategooriate jaoks
   - [x] Minu päring arvutab puuduvad hinnad (COUNT() - COUNT(price))
 
+---
+
+## 3.4 Conclusions: DISTINCT ja COUNT kokkuvõte
+
+* **Reflektsioon:**
+    * Miks on COUNT() ja COUNT(DISTINCT) vahe nii kasulik?
+    > COUNT loendab kõik read ja DISTINCT ainult kordumatud väärtused
+    * Kas sa ootasid, et UrbanStyle'i andmetes on nii palju duplikaate?
+    > Ma eeldasin seda kuna reaalsuses on neid ilmselt veelgi rohkem.
+
+### **Concrete Practice: Integreeriv harjutus — Uurimisraport Toomasele**
+
+ * **Ülesanne: Kirjuta neli päringut, mis vastavad kõigile Toomase küsimustele. Kasuta kõiki nädala jooksul õpitud käske.**
+ * Päring 1 — Duplikaatide arv:
+ > Toomase jaoks: "Meie tabelis on 15234 rida, millest 5116 on duplikaadid."
+```sql
+-- Küsimus: mitu duplikaati on?
+SELECT
+    COUNT(*) AS ridu_kokku,
+    COUNT(DISTINCT sale_id) AS unikaalseid,
+    COUNT(*) - COUNT(DISTINCT sale_id) AS duplikaate
+FROM sales;
+```
+
+* Päring 2 — NULL väärtused:
+    * Kirjuta ise päring, mis näitab, mitmel real puudub customer_id:
+    > Toomase jaoks: " 1487 tellimusel puudub kliendi ID."
+```sql
+SELECT COUNT(*)
+FROM sales
+WHERE customer_id IS NULL;
+```
+
+* Päring 3 — Suurimad müügid:
+    * Kirjuta päring, mis näitab 10 suurimat tellimust (sale_id, customer_id, total_price):
+    > Toomase jaoks: "Suurim müük oli 2170.40 eurot."
+```sql
+SELECT sale_id, customer_id, total_price
+FROM sales
+ORDER BY total_price DESC
+LIMIT 10;
+```
+
+* Päring 4 — Väikseimad müügid ja kahtlased read:
+    * Kirjuta päring, mis näitab 10 väikseimat tellimust JA read, kus summa on 0 või väiksem:
+    > Toomase jaoks: "Leidsime 305 tellimust, kus summa on 0 või negatiivne."
+```sql
+SELECT COUNT(*)
+FROM sales
+WHERE total_price <= 0;
+```
+
+* **Teadmiste Kontroll**
+
+* Küsimus 1:
+    * Toomas kirjutab päringu, mis näitab kõigi tellimuste summasid. Ta kasutab:
+    ```sql
+    SELECT * FROM sales;
+    ```
+    * Mis on selle päringu peamine probleem UrbanStyle'i kontekstis?
+       - [ ] See ei tööta, sest tabelit ei eksisteeri
+       - [ ] SELECT  on keelatud PostgreSQL-is
+       - [x] See tagastab kõik veerud ja kõik read — aeglane ja segane suurte andmetega
+       - [ ] See kustutab tabeli sisu
+
+* Küsimus 2:
+    * Sa tahad näha ainult Tallinna kaupluse tellimusi, mis on suuremad kui 200 eurot. Milline päring on õige?
+       - [x] SELECT * FROM sales WHERE total_price > 200 AND channel = 'Tallinn';
+       - [ ] SELECT * FROM sales WHERE total_price > 200 OR channel = 'Tallinn';
+       - [ ] SELECT * FROM sales WHERE total_price > 200, channel = 'Tallinn';
+       - [ ] SELECT * FROM sales AND total_price > 200 WHERE channel = 'Tallinn';
+
+* Küsimus 3:
+    * Mis vahe on COUNT(*) ja COUNT(customer_id) vahel, kui tabelis on 1000 rida, millest 50-l on customer_id NULL?
+       - [ ] Mõlemad annavad 1000
+       - [ ] Mõlemad annavad 950
+       - [ ] COUNT() = 950, COUNT(customer_id) = 1000
+       - [x] COUNT() = 1000, COUNT(customer_id) = 950
+
+* Küsimus 4:
+    * Toomas avastavab, et sales tabelis on COUNT() = 15234 ja COUNT(DISTINCT sale_id) = 10118. Mida see tähendab?
+       - [ ] Tabelis on 10 118 duplikaati
+       - [ ] Tabelis on 5 116 rida, millel puudub sale_id
+       - [x] Tabelis on 5 116 duplikeeritud rida (sama sale_id esineb rohkem kui korra)
+       - [ ] Tabel on katki ja tuleb uuesti luua
+
+* Küsimus 5:
+    * Anna tahab leida kliendid, kelle perekonnanimi algab tähega "T". Milline WHERE tingimus on õige?
+       - [ ] WHERE last_name = 'T%'
+       - [x] WHERE last_name LIKE 'T%'
+       - [ ] WHERE last_name IN ('T')
+       - [ ] WHERE last_name STARTS WITH 'T'
+
+* Küsimus 6:
+    * Miks kasutame WHERE customer_id IS NULL ja mitte WHERE customer_id = NULL?
 
 ---
