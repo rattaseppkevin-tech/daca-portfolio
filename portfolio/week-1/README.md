@@ -244,4 +244,22 @@ FROM customers;
 
 * **Harjutus 3C: Rakendus — uurimisraport**
 
+* Ülesanne: Toomas tahab ka products tabeli kohta ülevaadet. Kirjuta ise päring, mis näitab:
+ - Toodete koguarv
+ - Unikaalsete kategooriate arv
+ - Puuduvate hindade arv
+```sql
+SELECT 
+    COUNT(*) AS toodete_koguarv,
+    COUNT(DISTINCT category) AS unikaalseid,
+    COUNT(*) - COUNT(DISTINCT cost_price) AS puuduvad_hinnad
+FROM products;
+```
+
+* Kontrolltabel:
+  - [x] Minu päring kasutab COUNT() koguarvu jaoks
+  - [x] Minu päring kasutab COUNT(DISTINCT category) kategooriate jaoks
+  - [x] Minu päring arvutab puuduvad hinnad (COUNT() - COUNT(price))
+
+
 ---
