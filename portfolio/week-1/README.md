@@ -167,9 +167,9 @@ WHERE total_price <= 0 OR customer_id IS NULL
 
 ## 3.3 Concrete Practice: DISTINCT ja COUNT harjutused
 
-* **Harjutus 3A: Shu — kopeeri ja käivita**
-
-* <u>Päring 1 — Tabeli üldpilt:</u>
+### **Harjutus 3A: Shu — kopeeri ja käivita**
+* **Ülesanne:** Kopeeri järgmised päringud ja käivita need.
+    * <u>Päring 1 — Tabeli üldpilt:</u>
 
 * Ülesanne: Kopeeri järgmised päringud ja käivita need.
 ```sql
