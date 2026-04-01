@@ -1,13 +1,13 @@
 # Nädal 1: SQL Basics -- UrbanStyle'i andmete uurimine
 
 ## Mida ma tegin
-- Uurisin [tabeli nimi] tabelit SQL päringutega
-- Leidsin [peamine leid]
-- Osalesin meeskonna andmemaastiku koostamisel
+- SQL päringud: Analüüsisin sales tabelit.
+- Peamine leid: Avastasin andmetes olulise ebakõla — unikaalseid müüke on 10 118, kuid ridu on 15 234. See tähendab, et meil on üle 5000 duplikaadi, mis vajavad puhastamist.
+- Tiimitöö: Tegin SQL päringuid sales tabeli kohta.
 
 ## Peamised õpid
-- [Õppetund 1]
-- [Õppetund 2]
+- Andmete puhastamine on kriitiline.
+- Tabeli täpne filtreerimine on tähtis.
 
 ## Failid
 - `week1_[tabel]_exploration.sql` -- minu SQL päringud
