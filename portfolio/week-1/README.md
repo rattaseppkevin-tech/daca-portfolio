@@ -6,33 +6,33 @@
 
 * **Ülesanne: Kopeeri järgmised päringud Supabase SQL Editorisse ja käivita need ükshaaval.**
 
-    *  <u>Päring 1 — Vaata tabelit:</u>
+    * Päring 1 — Vaata tabelit:
     ```sql
     SELECT *
     FROM sales
     LIMIT 5;
     ```
-      > Mitu veergu sa näed? Kirjuta veergude nimed siia:  
-      > Esimesed 5. Veergude nimed on sale_id, invoice_id, sale_data, customer_id jne.
+    > Mitu veergu sa näed? Kirjuta veergude nimed siia:  
+    > Esimesed 5. Veergude nimed on sale_id, invoice_id, sale_data, customer_id jne.
 
-    * <u>Päring 2 — Vali konkreetsed veerud:</u>
+    * Päring 2 — Vali konkreetsed veerud:
     ```sql
     SELECT sale_id, customer_id, total_price, sale_date
     FROM sales
     LIMIT 10;
     ```
-      > Milline on suurim summa nende 10 rea seas?  
-      > 7. rida ja summaks on 629.96.
+    > Milline on suurim summa nende 10 rea seas?  
+    > 7. rida ja summaks on 629.96.
 
-    * <u>Päring 3 — Sorteeri ja piira:</u>
+    * Päring 3 — Sorteeri ja piira:
     ```sql
     SELECT sale_id, total_price AS summa
     FROM sales
     ORDER BY total_price DESC
     LIMIT 5;
     ```
-      > Milline on kõige suurem müük kogu tabelis?  
-      > Kuna kasutame DESC funktsiooni, siis esimene rida, sale_id 2407 ja summa on 2170.4.
+    > Milline on kõige suurem müük kogu tabelis?  
+    > Kuna kasutame DESC funktsiooni, siis esimene rida, sale_id 2407 ja summa on 2170.4.
 
 ---
 
