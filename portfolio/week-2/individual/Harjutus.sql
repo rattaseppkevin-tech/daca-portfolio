@@ -65,3 +65,4 @@ WHERE email IN (
     HAVING COUNT(*) > 1
 )
 ORDER BY email;
+

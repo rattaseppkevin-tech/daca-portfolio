@@ -25,3 +25,12 @@ SELECT
     COUNT(phone) AS telefon_olemas,
     COUNT(*) - COUNT(phone) AS telefon_puudub
 FROM customers;
+
+-- Kliendid, kellel puudub nimi VÕI e-mail
+SELECT customer_id, first_name, last_name, email, city
+FROM customers
+WHERE first_name IS NULL
+    OR last_name IS NULL
+    OR email IS NULL
+ORDER BY customer_id
+LIMIT 15;
