@@ -39,6 +39,7 @@
 ### Harjutus 1B: Shu/Ha — muuda malli
 
 * **Kirjuta oma päring siia (5 väikseimat müüki):**
+
     ```sql
     SELECT sale_id, total_price AS summa
     FROM sales
@@ -357,8 +358,5 @@ WHERE total_price <= 0;
        - [x] WHERE last_name LIKE 'T%'
        - [ ] WHERE last_name IN ('T')
        - [ ] WHERE last_name STARTS WITH 'T'
-
-* Küsimus 6:
-    * Miks kasutame WHERE customer_id IS NULL ja mitte WHERE customer_id = NULL?
 
 ---
