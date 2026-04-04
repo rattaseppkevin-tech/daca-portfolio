@@ -86,7 +86,7 @@
     ```
 
     * **Kontrolltabel:**
-    - [x] Minu päring kasutab GROUP BY + HAVING COUNT() > 1
-    - [x] Ma oskan põhjendada, miks valisin just selle veeru duplikaadi aluseks
-    - [x] Ma dokumenteerisin tulemuse (mitu duplikaati leiti)
+        - [x] Minu päring kasutab GROUP BY + HAVING COUNT() > 1
+        - [x] Ma oskan põhjendada, miks valisin just selle veeru duplikaadi aluseks
+        - [x] Ma dokumenteerisin tulemuse (mitu duplikaati leiti)
 
