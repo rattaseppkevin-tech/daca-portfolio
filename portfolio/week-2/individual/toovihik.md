@@ -131,5 +131,29 @@
     * Telefon puudub:
         > 0
 
+* **Nüüd vaata, millised konkreetsed kliendid on puudulike andmetega:**
+
+    ```sql
+    -- Kliendid, kellel puudub nimi VÕI e-mail
+    SELECT customer_id, first_name, last_name, email, city
+    FROM customers
+    WHERE first_name IS NULL
+        OR last_name IS NULL
+        OR email IS NULL
+    ORDER BY customer_id
+    LIMIT 15;
+    ```
+
+    * Kas puudulike andmetega kliendid on mõnest konkreetsest linnast?
+        > Ei ole ees ja perekonna nimed on olemas linna nimetused samuti, aga kõigil on email NULL.
+
+### Harjutus 2B: Ha — COALESCE praktiline kasutamine
+
+* **Ülesanne: Liis Koppel tahab näha kõiki kliente, aga tühjade nimede asemel peaks kuvama "Tundmatu klient". Kirjuta päring, mis kasutab COALESCE funktsiooni.**
+
+    * Kasuta COALESCE(first_name, 'Tundmatu') eesnime jaoks
+    * Kasuta COALESCE(last_name, '') perekonnanime jaoks
+    * Lisa ka COALESCE e-mailile ja telefonile
+    * Filtreeri ainult need kliendid, kellel vähemalt üks väli on NULL.
 
 
