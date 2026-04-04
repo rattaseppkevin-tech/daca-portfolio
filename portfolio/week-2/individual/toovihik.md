@@ -123,13 +123,13 @@
     FROM customers;
     ```
     * Kliente kokku:
-        > 3150.
+        > 3150
     * Eesnimi puudub:
-        > 0.
+        > 0
     * E-mail puudub:
-        > 380.
+        > 380
     * Telefon puudub:
-        > 0.
+        > 0
 
 
 
