@@ -29,3 +29,39 @@ SELECT
         ORDER BY sale_id, sale_date
     ) unikaalsed) AS summa_ilma_duplikaatideta
 FROM sales;
+
+-- 
+SELECT
+    email,
+    customer_id,
+    ROW_NUMBER() OVER (PARTITION BY email ORDER BY customer_id) AS rn
+FROM customers;
+
+-- 
+SELECT *
+FROM (
+    SELECT
+        email,
+        customer_id,
+        ROW_NUMBER() OVER (PARTITION BY email ORDER BY customer_id) AS rn
+    FROM customers
+) AS subquery
+WHERE rn > 1;
+
+SELECT *
+FROM (
+    SELECT
+        email,
+        first_name,
+        last_name,
+        customer_id,
+        ROW_NUMBER() OVER (PARTITION BY email ORDER BY customer_id) AS rn
+    FROM customers
+) AS subquery
+WHERE email IN (
+    SELECT email 
+    FROM customers 
+    GROUP BY email 
+    HAVING COUNT(*) > 1
+)
+ORDER BY email;

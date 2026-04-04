@@ -1,4 +1,6 @@
-# Nädal 2: SQL
+# Nädal 2: SQL Puhastamine.
+
+ ---
 
 ## 1.3 Concrete Practice: Duplikaatide harjutused
 
@@ -42,3 +44,49 @@
         > Summa duplikaatidega on: 4,374,231.27 ja ilma 2,898,901.28 vahe on 1,475,329.99 eurot.
 
 ### Harjutus 1B: Ha — ROW_NUMBER() kasutamine
+
+* **Ülesanne: Kirjuta päring, mis kasutab ROW_NUMBER() funktsiooni, et nummerdada customers tabeli read email veeru järgi. Nii leiad kliendid, kellel on sama e-mail mitu korda.**
+    * Vihjed:
+        * PARTITION BY email
+        * ORDER BY customer_id (väikseim ID = esimene kirje)
+        * Filtreeri tulemustest ainult read, kus rn > 1 (need on duplikaadid)
+
+    ```sql
+    SELECT *
+    FROM (
+        SELECT
+            email,
+            customer_id,
+            ROW_NUMBER() OVER (PARTITION BY email ORDER BY customer_id) AS rn
+        FROM customers
+    ) AS subquery
+    WHERE rn > 1;
+     ```
+
+     * Mitu duplikaatset e-maili on customers tabelis?
+        > 129.
+     * Kas duplikaatsetel klientidel on ka erinev nimi?
+        > Jah on, pealmiselt on need suurte ja väikeste tähtede eksimused.
+     * Miks see probleem võib tekkida? (nt klient registreeris end mitu korda)
+        > Kui reklaame või mingeid kampaaniaid teha, siis kliendile tuleb üks ja sama E-mail mitu korda.
+
+### Harjutus 1C: Rakendus — oma duplikaatide audit
+
+* **Ülesanne: Vali ise tabel (nt products või customers) ja kontrolli, kas seal on duplikaate. Otsusta ise, millise veeru järgi duplikaati defineerida.**
+    ```sql
+    SELECT SUM(koopiad) AS duplikaatide_koguarv
+    FROM (
+        SELECT
+            phone,
+            COUNT(*) AS koopiad
+        FROM customers
+        GROUP BY phone
+        HAVING COUNT(*) > 1
+    ) AS alam_paring;
+    ```
+
+    * **Kontrolltabel:**
+    - [x] Minu päring kasutab GROUP BY + HAVING COUNT() > 1
+    - [x] Ma oskan põhjendada, miks valisin just selle veeru duplikaadi aluseks
+    - [x] Ma dokumenteerisin tulemuse (mitu duplikaati leiti)
+
