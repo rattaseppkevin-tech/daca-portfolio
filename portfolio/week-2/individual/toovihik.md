@@ -64,7 +64,7 @@
      ```
 
      * Mitu duplikaatset e-maili on customers tabelis?
-        > 129.
+        > 129
      * Kas duplikaatsetel klientidel on ka erinev nimi?
         > Jah on, pealmiselt on need suurte ja väikeste tähtede eksimused.
      * Miks see probleem võib tekkida? (nt klient registreeris end mitu korda)
@@ -89,7 +89,7 @@
         - [x] Minu päring kasutab GROUP BY + HAVING COUNT() > 1
         - [x] Ma oskan põhjendada, miks valisin just selle veeru duplikaadi aluseks
         - [x] Ma dokumenteerisin tulemuse (mitu duplikaati leiti)
-            > 297.
+            > 297
 
 ---
 
