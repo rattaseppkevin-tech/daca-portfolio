@@ -89,4 +89,47 @@
         - [x] Minu päring kasutab GROUP BY + HAVING COUNT() > 1
         - [x] Ma oskan põhjendada, miks valisin just selle veeru duplikaadi aluseks
         - [x] Ma dokumenteerisin tulemuse (mitu duplikaati leiti)
+            > 297.
+
+---
+
+## 1.4 Conclusions: Duplikaatide kokkuvõte 
+
+ * **Reflektsioon:**
+
+    * Mis oli kõige üllatavam duplikaatide juures?
+        > Kui suurt mõju avaldavad kokkuvõtetes.
+    * Kas duplikaatide rahaline mõju oli oodatust suurem või väiksem?
+        > Suurem.
+
+---
+
+## 2.3 Concrete Practice: NULL harjutused
+
+### Harjutus 2A: Shu — järgi malli
+
+* **Ülesanne: Kopeeri ja käivita — leia UrbanStyle'i andmetest NULL väärtused.**
+
+    ```sql
+    -- NULL-ide ülevaade customers tabelis
+    SELECT
+        COUNT(*) AS kliente_kokku,
+        COUNT(first_name) AS eesnimi_olemas,
+        COUNT(*) - COUNT(first_name) AS eesnimi_puudub,
+        COUNT(email) AS email_olemas,
+        COUNT(*) - COUNT(email) AS email_puudub,
+        COUNT(phone) AS telefon_olemas,
+        COUNT(*) - COUNT(phone) AS telefon_puudub
+    FROM customers;
+    ```
+    * Kliente kokku:
+        > 3150.
+    * Eesnimi puudub:
+        > 0.
+    * E-mail puudub:
+        > 380.
+    * Telefon puudub:
+        > 0.
+
+
 
