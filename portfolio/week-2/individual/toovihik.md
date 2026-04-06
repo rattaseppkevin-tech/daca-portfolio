@@ -156,4 +156,51 @@
     * Lisa ka COALESCE e-mailile ja telefonile
     * Filtreeri ainult need kliendid, kellel vähemalt üks väli on NULL.
 
+    ```sql
+    SELECT
+        customer_id,
+        COALESCE(first_name, 'Tundmatu') AS eesnimi,
+        COALESCE(last_name, 'Puuduv') AS perekonnanimi,
+        COALESCE(email, 'puudub@urbanstyle.ee') AS email,
+        COALESCE(phone, 'numberpuudu') AS telefon
+    FROM customers
+    WHERE first_name IS NULL 
+    OR last_name IS NULL 
+    OR email IS NULL 
+    OR phone IS NULL;
+    ```
+    * Mitu klienti vajab COALESCE asendusväärtust?
+        > 380
+        ```sql
+        SELECT COUNT(*) AS vajab_asendust
+        FROM customers
+        WHERE first_name IS NULL 
+        OR last_name IS NULL 
+        OR email IS NULL 
+        OR phone IS NULL;
+        ```
+    * Kas COALESCE muutis andmeid tabelis?
+        > Ei muutnud asendab ainult päringu ajaks.
+    * Miks on kasulik näidata "Tundmatu" NULL-i asemel?
+        > See on loetavam ja aitab vältida vigu.
+
+### Harjutus 2C: Rakendus — NULL-ide mõju arvutustele
+
+* **Ülesanne: Kontrolli, kas NULL-id mõjutavad sales tabeli arvutusi. Võrdle tulemusi:**
+
+    ```sql
+    -- Võrdlus: SUM kõigist vs SUM mitte-NULL väärtustest
+    SELECT
+        COUNT(*) AS ridu,
+        COUNT(total_price) AS summa_olemas,
+        COUNT(*) - COUNT(total_price) AS summa_puudub,
+        SUM(total_price) AS kogusumma,
+        AVG(total_price) AS keskmine
+    FROM sales;
+    ```
+    * **Kontrolltabel:**
+        - [x] Ma tean, mitu rida on NULL total_price-iga
+        - [x] Ma saan aru, et SUM ja AVG ignoreerivad NULL-e automaatselt
+        - [x] Ma oskan seletada, miks see võib olla probleem (keskmine ei kajasta puuduvaid tellimusi)
+
 

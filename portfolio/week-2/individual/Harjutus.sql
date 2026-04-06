@@ -58,6 +58,7 @@ FROM (
         ROW_NUMBER() OVER (PARTITION BY email ORDER BY customer_id) AS rn
     FROM customers
 ) AS subquery
+
 WHERE email IN (
     SELECT email 
     FROM customers 
