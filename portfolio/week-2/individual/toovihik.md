@@ -203,4 +203,103 @@
         - [x] Ma saan aru, et SUM ja AVG ignoreerivad NULL-e automaatselt
         - [x] Ma oskan seletada, miks see võib olla probleem (keskmine ei kajasta puuduvaid tellimusi)
 
+---
+
+## 3.3 Concrete Practice: Andmeformaatide harjutused
+
+### Harjutus 3A: Shu — järgi malli
+
+* **Ülesanne: Kopeeri ja käivita — vaata, kuidas kuupäeva formaadid töötavad.**
+
+    ```sql
+    -- Toovihiku kood andis errori, siis AI aitas teha sellise koodi.
+    -- Kuupäevade formateerimine UrbanStyle'i andmetes
+    SET datestyle = 'ISO, DMY'; -- Ütleme, et päeva-kuu järjekord on okei
+
+    SELECT
+        sale_id,
+        sale_date,
+        TO_CHAR(sale_date::DATE, 'DD.MM.YYYY') AS eesti_kuupaev,
+        TO_CHAR(sale_date::DATE, 'FMDay') AS nadalapaev,
+        TO_CHAR(sale_date::DATE, 'YYYY-"Q"Q') AS kvartal,
+        EXTRACT(DOW FROM sale_date::DATE) AS paev_nr
+    FROM sales
+    ORDER BY sale_date::DATE DESC -- Sorteerime ka kuupäevana, mitte tekstina!
+    LIMIT 10;
+    ```
+    * Mis formaadis on sale_date vaikimisi salvestatud?
+        > Andmed ei ole ühes formaadis kõik võimalikud formaadid on vist kasutusel.
+    * Milline päev oli viimane tellimus?
+        > Pühapäev, tuleviku kuupäev 26-06-28.
+    * Millises kvartalis oli kõige viimane tellimus?
+        > 2026-Q2
+
+* **Nüüd vaata linnade kirjaviise:**
+
+    ```sql
+    -- Linnade ühtlustamise diagnostika
+    SELECT
+        city AS originaal,
+        TRIM(city) AS trimitud,
+        INITCAP(TRIM(city)) AS puhastatud,
+        COUNT(*) AS kliente
+    FROM customers
+    GROUP BY city
+    ORDER BY city;
+    ```
+
+    * Mitu erinevat kirjaviisi on samal linnal?
+        > Raske öelda mõnel linnal 2 mõnel 3 mõnel 4 ja rohkem.
+
+### Harjutus 3B: Ha — andmete puhastamine
+
+* **Ülesanne: Kirjuta päring, mis näitab customers tabeli linnade "puhastatud" versiooni koos statistikaga. Grupeeri puhastatud linnade kaupa**
+
+    * Vihjed:
+        * Kasuta INITCAP(TRIM(city)) puhastatud linna jaoks
+        * Grupeeri puhastatud linna veeru järgi (mitte algse city järgi)
+        * Näita iga puhastatud linna kohta: kliente kokku, mitu erinevat algset kirjaviisi
+        * Sorteeri klientide arvu järgi kahanevalt
+
+    ```sql
+    SELECT 
+        INITCAP(TRIM(city)) AS puhastatud_linn,
+        COUNT(*) AS kliente_kokku,
+        COUNT(DISTINCT city) AS erinevaid_kirjaviise
+    FROM customers
+    GROUP BY INITCAP(TRIM(city))
+    ORDER BY kliente_kokku DESC;
+    ```
+    * Mitu unikaalset "puhastatud" linna sa näed?
+        > 12 linna on puhastatud.
+    * Kas mõnel linnal on rohkem kui üks algne kirjaviis?
+        > Kõikidel linnadel oli rohkem kui 1 peale seda koodi on kõiki 1.
+    * Miks GROUP BY puhastatud versiooni järgi annab õigema tulemuse?
+        > Kuna eelnevalt olid kliendid laiali nüüd liitis kõik valesti trükitud linnade kliendid kokku.
+
+### Harjutus 3C: Rakendus — tüübikonversiooni probleemid
+
+* **Ülesanne: Kontrolli, kas products tabelis on kõik hinnad õiges formaadis. Kasuta CAST ja vaata, kas tekib vigu.**
+
+    ```sql
+    SELECT
+        product_id,
+        product_name,
+        retail_price,
+        CAST(retail_price AS NUMERIC) AS kontroll_numeric,
+        CASE
+            WHEN retail_price IS NULL THEN 'NULL'
+            WHEN retail_price <= 0 THEN 'VIGA'
+            ELSE 'OK'
+        END AS hinna_staatus
+    FROM products
+    ORDER BY retail_price ASC;
+    ```
+
+    * **Kontrolltabel:**
+        - [x] Ma tean, mitu toodet on NULL või 0 hinnaga
+        - [x] Ma oskan eristada NULL hinda (puudub) ja 0 hinda (tasuta?)
+        - [x] Ma saan aru, miks INITCAP + TRIM on kasulik linnade puhastamisel
+
+---
 
