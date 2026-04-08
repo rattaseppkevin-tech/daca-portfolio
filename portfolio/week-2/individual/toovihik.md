@@ -303,3 +303,59 @@
 
 ---
 
+## 3.4 Concrete Practice: Integreeriv harjutus — Puhastamisraport Toomasele
+
+* **Ülesanne: Kirjuta kolm päringut, mis koos moodustavad tervikliku puhastamisraporti.**
+    * Päring 1 — Duplikaatide kokkuvõte:
+        ```sql
+        -- Duplikaatide ülevaade kõigis tabelites
+        SELECT 'sales' AS tabel,
+            COUNT(*) AS ridu_kokku,
+            COUNT(DISTINCT sale_id) AS unikaalseid,
+            COUNT(*) - COUNT(DISTINCT sale_id) AS duplikaate
+        FROM sales
+        UNION ALL
+        SELECT 'customers',
+            COUNT(*),
+            COUNT(DISTINCT email),
+            COUNT(*) - COUNT(DISTINCT email)
+        FROM customers
+        UNION ALL
+        SELECT 'products',
+            COUNT(*),
+            COUNT(DISTINCT product_id),
+            COUNT(*) - COUNT(DISTINCT product_id)
+        FROM products;
+        ```
+        * Toomase jaoks: "Kokku leidsime 5116 ja 510 duplikaati sales ja customer tabelis."
+
+    * Päring 2 — NULL väärtuste raport:
+
+        * Kirjuta ise päring, mis näitab iga tabeli kohta, mitu NULL väärtust on olulistes veergudes:
+
+            ```sql
+            SELECT 'sales' AS tabel,
+                COUNT(*) AS read_kokku,
+                COUNT(customer_id) AS unikaalsed,
+                COUNT(*) - COUNT(customer_id) AS nullid
+            FROM sales
+            UNION ALL
+            SELECT 'customers',
+                COUNT(*),
+                COUNT(email),
+                COUNT(*) - COUNT(email)
+            FROM customers
+            UNION ALL
+            SELECT 'products',
+                COUNT(*),
+                COUNT(supplier),
+                COUNT(*) - COUNT(supplier)
+            FROM products;
+            ```
+            * Toomase jaoks: "Kõige rohkem puuduvaid väärtusi on sales tabelis, kus 1487 kirjel puudub customer_id."
+    
+    * Päring 3 — Formaatide diagnostika:
+
+        * Kirjuta päring, mis näitab kõiki unikaalseid linnade kirjaviise koos puhastatud versioonidega:
+
+---      
