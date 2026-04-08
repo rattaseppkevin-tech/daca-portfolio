@@ -10,6 +10,7 @@ FROM sales s
 LEFT JOIN products p ON s.product_id = p.product_id
 WHERE p.product_id IS NULL AND s.product_id IS NOT NULL;
 
+-- Kontrolli hindade kooskõla — kas müügihind ja tootehind klapivad?
 SELECT 
     s.sale_id, 
     s.total_price, 
@@ -21,22 +22,26 @@ JOIN products p ON s.product_id = p.product_id
 WHERE ABS(s.total_price - (p.retail_price * s.quantity)) > 1
 ORDER BY ABS(s.total_price - (p.retail_price * s.quantity)) DESC -- Kasutame valemit, mitte nime
 LIMIT 20;
-
+ -- Kontrolli, kas on kliente, kes pole kunagi ostnud:
 SELECT COUNT(*) 
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 WHERE ABS(s.total_price - (p.retail_price * s.quantity)) > 1;
 
+-- Arvutan kokku kõik kliendid kes pole kunagi ostnud.
 SELECT COUNT(*) AS vaimkliendid
 FROM customers c
 LEFT JOIN sales s ON c.customer_id = s.customer_id
 WHERE s.customer_id IS NULL;
 
+-- Arvutan kokku kõik tooted mida pole kunagi ostetud.
 SELECT COUNT(*) AS vaimtooted
 FROM products p
 LEFT JOIN sales s ON p.product_id = s.product_id
 WHERE s.product_id IS NULL;
 
+
+-- Millistel tootel on suurimad hinnaerinevused?
 SELECT 
     p.product_name, 
     p.category, 
@@ -51,20 +56,3 @@ HAVING ABS(p.retail_price - AVG(s.total_price / NULLIF(s.quantity, 0))) > 5
 -- ORDER BY osas võime kasutada tulba järjekorranumbrit (5. tulp on erinevus)
 ORDER BY ABS(5) DESC
 LIMIT 10;
-
-SELECT 
-    p.product_name, 
-    p.retail_price AS list_hind,
-    AVG(s.total_price / NULLIF(s.quantity, 0)) AS kesk_muugihind,
-    -- Arvutame vahe: (Listihind - Müügihind) / Listihind
-    -- Positiivne tulemus = Allahindlus
-    -- Negatiivne tulemus = Toode on müüdud kallimalt kui listihind
-    ROUND(
-        ((p.retail_price - AVG(s.total_price / NULLIF(s.quantity, 0))) / p.retail_price * 100), 
-        2
-    ) AS allahindlus_protsent
-FROM products p
-JOIN sales s ON p.product_id = s.product_id
-GROUP BY p.product_id, p.product_name, p.retail_price
-HAVING ABS(p.retail_price - AVG(s.total_price / NULLIF(s.quantity, 0))) > 1
-ORDER BY allahindlus_protsent ASC; -- Näitab kõigepealt suuri "negatiivseid" allahindlusi ehk vigu

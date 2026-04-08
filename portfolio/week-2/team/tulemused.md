@@ -2,7 +2,9 @@
 
 **Roll:** Kvaliteedikontrollija (Data Quality Analyst)
 
-> "Mina teostasin **andmete ristvalideerimise ja terviklikkuse kontrolli**. Leidsin, et süsteemidevahelised seosed on puhtad (**0 orbu**), kuid tuvastasin **664 hinna ebakõla** ja **592 tehinguteta kirjet**. See tähendab äriliselt, et meie **hinnakiri on aegunud** (tegelik müügihind on kuni 68% kõrgem) ja **finantsaruandlus on ebatäpne** negatiivsete müügisummade tõttu."
+ * Mina teostasin andmete terviklikkuse kontrolli, sales, customers ja products tabelite vahel.
+ Tuvastasin, et meie süsteemidevahelised seosed on veatud kõik müügid on korrektselt seotud reaalsete klientide ja toodega. Kuid tuvastasin 664 hinna ebakõla ja 604 tehinguta kirjet (592 vaimklienti ja 12 vaimtoodet.)
+ See tähendab äriliselt, et meie andmebaas sisaldab palju "tühja müra", mis moonutab meie hinnakirja ja finantsaruandlust.
 
 ---
 
@@ -19,8 +21,8 @@
 
 ---
 
-## Soovitus Toomasele
+## Eksperdi soovitus Toomasele
 
-**Probleem:** Kõige kriitilisem leid on negatiivsed müügisummad ja suur erinevus listihinna ning tegeliku müügihinna vahel (kuni 68%). 
+**Kõige kriitilisem probleem:** 664 hinna ebakõla.
 
-**Mõju:** See tähendab, et ettevõtte kasumiarvutused on praegu ebatäpsed. Me arvame, et müüme odavalt, aga tegelikult müüme kallimalt – või vastupidi. Meie "andmebaasi tõde" ei vasta reaalsetele tehingutele.
+**Miks see on ohtlik?** See ei ole ainult tehniline viga, vaid otsene finantsrisk. Kui müügihind ja listihind ei klapi, ei saa me usaldada kasumiaruandeid ega marginaale. See tähendab, et me teeme äriotsuseid "pimeduses".
