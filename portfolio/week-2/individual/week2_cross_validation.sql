@@ -22,17 +22,19 @@ JOIN products p ON s.product_id = p.product_id
 WHERE ABS(s.total_price - (p.retail_price * s.quantity)) > 1
 ORDER BY ABS(s.total_price - (p.retail_price * s.quantity)) DESC -- Kasutame valemit, mitte nime
 LIMIT 20;
- -- Kontrolli, kas on kliente, kes pole kunagi ostnud:
-SELECT COUNT(*) 
-FROM sales s
-JOIN products p ON s.product_id = p.product_id
-WHERE ABS(s.total_price - (p.retail_price * s.quantity)) > 1;
 
--- Arvutan kokku kõik kliendid kes pole kunagi ostnud.
+-- Kontrollime, kas 810 on hoopis ostudeta klientide arv
+SELECT COUNT(*) 
+FROM customers c
+LEFT JOIN sales s ON c.customer_id = s.customer_id
+WHERE s.sale_id IS NULL;
+
+ -- Kontrolli, kas on kliente, kes pole kunagi ostnud:
 SELECT COUNT(*) AS vaimkliendid
 FROM customers c
 LEFT JOIN sales s ON c.customer_id = s.customer_id
 WHERE s.customer_id IS NULL;
+
 
 -- Arvutan kokku kõik tooted mida pole kunagi ostetud.
 SELECT COUNT(*) AS vaimtooted

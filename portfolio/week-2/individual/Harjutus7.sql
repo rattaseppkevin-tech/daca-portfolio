@@ -34,3 +34,5 @@ SELECT 'products',
     COUNT(*) - COUNT(supplier)
 FROM products;
     
+
+

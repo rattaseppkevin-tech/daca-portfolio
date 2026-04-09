@@ -358,4 +358,11 @@
 
         * Kirjuta päring, mis näitab kõiki unikaalseid linnade kirjaviise koos puhastatud versioonidega:
 
+            ```sql
+            SELECT 
+                (COUNT(DISTINCT city) - COUNT(DISTINCT TRIM(UPPER(city)))) AS ebajarjekindlad_kirjaviisid
+            FROM customers;
+            ```
+            * Toomase jaoks: "Leidsime 42 ebajärjekindlat linnanimede kirjaviisi, mis tuleb ühtlustada."
+    
 ---      
