@@ -2,9 +2,10 @@
 
 **Roll:** Kvaliteedikontrollija (Data Quality Analyst)
 
- * Mina teostasin andmete terviklikkuse kontrolli, sales, customers ja products tabelite vahel.
- Tuvastasin, et meie süsteemidevahelised seosed on veatud kõik müügid on korrektselt seotud reaalsete klientide ja toodega. Kuid tuvastasin 664 hinna ebakõla ja 604 tehinguta kirjet (592 vaimklienti ja 12 vaimtoodet.)
- See tähendab äriliselt, et meie andmebaas sisaldab palju "tühja müra", mis moonutab meie hinnakirja ja finantsaruandlust.
+ * Mina kontrollisin andmete terviklikkust sales, customers ja products tabelite vahel.
+Positiivne leid oli, et katkiseid seoseid ei leitud, kõik müügid on korrektsed.
+Küll aga leidsin 664 hinna ebakõla ja 604 mitteaktiivset kirjet.(592 klienti kes pole kunagi ostnud ja 12 toodet mida pole kunagi müüdud).
+See tähendab äriliselt, et meie hinnastamine võib olla vigane ning meil on kliente ja tooteid, mis ei too tulu.
 
 ---
 
@@ -23,6 +24,4 @@
 
 ## Eksperdi soovitus Toomasele
 
-**Kõige kriitilisem probleem:** 664 hinna ebakõla.
-
-**Miks see on ohtlik?** See ei ole ainult tehniline viga, vaid otsene finantsrisk. Kui müügihind ja listihind ei klapi, ei saa me usaldada kasumiaruandeid ega marginaale. See tähendab, et me teeme äriotsuseid "pimeduses".
+Kõige kriitilisem probleem on 664 hinna ebakõla, sest need mõjutavad otseselt ettevõtte tulu ja finantsaruandluse täpsust.
