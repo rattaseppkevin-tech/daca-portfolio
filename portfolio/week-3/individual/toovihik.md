@@ -1,4 +1,5 @@
-# ...
+# Nädal 3 SQL JOINs
+
 
 ## 1.3 Concrete Practice: INNER JOIN harjutused
 
