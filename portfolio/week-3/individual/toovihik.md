@@ -34,3 +34,49 @@
 
 * **Ülesanne: Kirjuta ise päring, mis ühendab sales ja products tabelid, et näha tootenimesid koos müüdud kogustega.**
 
+   ```sql
+   SELECT
+      p.product_name,
+      p.category,
+      s.quantity,
+      s.unit_price
+   FROM sales s
+   INNER JOIN products p ON s.product_id = p.product_id
+   ORDER BY s.quantity DESC
+   LIMIT 15;
+   ```
+
+      * Milline toode on kõige rohkem müüdud?
+         > Kõik 15 toodet mis päringus tulid on võrdselt müüdud.
+      * Kas kalleim toode on ka enim müüdud?
+         > Ei ole.
+      * Mida see ütleb UrbanStyle'i klientide eelistuste kohta?
+         > Hetkeline päring näitab, et meeste riided on enim ostetud ca 50% koguest.
+
+### Harjutus 1C: Rakendus — oma päring
+
+* **Ülesanne: Mõtle ühele küsimusele, millele INNER JOIN aitab vastata. Kirjuta päring ja vaata tulemust.**
+
+   * Millised kliendid tellisid viimase kuu jooksul?
+   * Milliste toodete tellimustes on kõrgeim ühikuhind?
+   * Millistest linnadest tulevad tellimused?
+
+      ```sql
+      SELECT
+         p.product_name,
+         p.category,
+         s.store_location,
+         s.unit_price,
+         s.sale_date
+      FROM sales s
+      INNER JOIN products p ON s.product_id = p.product_id
+      ORDER BY s.total_price DESC
+      LIMIT 20;
+      ```
+      * **Kontrolltabel:**
+
+        - [x] Minu päring kasutab INNER JOIN-i
+        - [x] Minu päring kasutab ON klauslit õige ühendava veeruga
+        - [x] Minu päring kasutab tabeli aliaseid
+
+
