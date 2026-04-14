@@ -46,12 +46,12 @@
    LIMIT 15;
    ```
 
-      * Milline toode on kõige rohkem müüdud?
-         > Kõik 15 toodet mis päringus tulid on võrdselt müüdud.
-      * Kas kalleim toode on ka enim müüdud?
-         > Ei ole.
-      * Mida see ütleb UrbanStyle'i klientide eelistuste kohta?
-         > Hetkeline päring näitab, et meeste riided on enim ostetud ca 50% koguest.
+   * Milline toode on kõige rohkem müüdud?
+     > Kõik 15 toodet mis päringus tulid on võrdselt müüdud.
+   * Kas kalleim toode on ka enim müüdud?
+      > Ei ole.
+  * Mida see ütleb UrbanStyle'i klientide eelistuste kohta?
+     > Hetkeline päring näitab, et meeste riided on enim ostetud ca 50% koguest.
 
 ### Harjutus 1C: Rakendus — oma päring
 
