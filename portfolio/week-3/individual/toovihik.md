@@ -1,5 +1,6 @@
 # Nädal 3 SQL JOINs
 
+---
 
 ## 1.3 Concrete Practice: INNER JOIN harjutused
 
@@ -79,4 +80,89 @@
         - [x] Minu päring kasutab ON klauslit õige ühendava veeruga
         - [x] Minu päring kasutab tabeli aliaseid
 
+---
 
+### 2.3 Concrete Practice: LEFT JOIN harjutused
+
+* **Harjutus 2A: Shu — järgi malli**
+
+   ```sql
+   -- Kadunud kliendid: LEFT JOIN + WHERE IS NULL
+   SELECT
+      c.customer_id,
+      c.first_name || ' ' || c.last_name AS nimi,
+      c.email,
+      c.city,
+      c.registration_date
+   FROM customers c
+   LEFT JOIN sales s ON c.customer_id = s.customer_id
+   WHERE s.sale_id IS NULL
+   ORDER BY c.registration_date DESC;
+   ```
+   * Mitu "kadunud" klienti leidsid?
+      > 599 passiivset klienti.
+   * Millisest linnast on enim kadunud kliente?
+      > Sellise päringu puhul raske öelda, tundub olevat Tartust.
+   * Millal registreerus kõige vanem kadunud klient?
+      > 2020-01-02
+
+      * **Nüüd käivita INNER JOIN versioon samade tabelitega:**
+
+      ```sql
+      -- Võrdluseks: INNER JOIN (ainult aktiivsed kliendid)
+      SELECT COUNT(DISTINCT c.customer_id) AS aktiivseid_kliente
+      FROM sales s
+      INNER JOIN customers c ON s.customer_id = c.customer_id;
+      ```
+
+      * Kui palju aktiivseid kliente on?
+         > 2551
+      * Arvuta: kadunud + aktiivsed = _____ (kas see vastab kõigi klientide arvule?)
+         > 2551 + 599 = 3150 peab paika.
+
+### Harjutus 2B: Ha — tooted ilma müügita
+
+* **Ülesanne: Anna küsib: "Millised tooted on meie kataloogis, aga neid pole kunagi müüdud? Need võtavad laoruumi ja seovad raha!" Kirjuta ise päring, mis leiab müümata tooted.**
+   
+   ```sql
+   SELECT
+      p.product_name,
+      p.category,
+      p.cost_price,    -- See on summa, millega me toote sisse ostsime (seotud raha)
+      p.retail_price,  -- See on summa, millega me lootsime seda müüa
+      p.retail_price - p.cost_price AS oodatav_kasum -- Arvutame, millest me ilma jääme
+   FROM products p
+   LEFT JOIN sales s ON p.product_id = s.product_id
+   WHERE s.sale_id IS NULL
+   ORDER BY p.cost_price DESC;
+   ```
+
+   * Mitu müümata toodet leidsid?
+      > 12
+   * Millises kategoorias on enim müümata tooteid?
+      > Aksessuaarid
+   * Mis võiks olla põhjus, miks neid ei osteta?
+      > Ma küll tänapäeva stiilist ei tea midagi, aga katlane tundub, et keegi keraamilist salli või puust mütsi kannaks.
+      > Ehk, siis tegu on imelikkude toodetega minu arvates.
+
+### Harjutus 2C: Rakendus — kadunud klientide analüüs
+
+* **Ülesanne: Anna tahab teada rohkem kadunud klientide kohta. Kirjuta päring, mis grupeerib kadunud kliendid linnade kaupa ja näitab, mitu kadunud klienti on igas linnas.**
+
+   ```sql
+   SELECT
+      c.city,                             -- Näitame linna nime
+      COUNT(c.customer_id) AS kadunud_kliendid -- Loeme kokku kliendid selles linnas
+   FROM customers c
+   LEFT JOIN sales s ON c.customer_id = s.customer_id
+   WHERE s.sale_id IS NULL                 -- Ainult need, kellel pole müüke
+   GROUP BY c.city                         -- Grupeerime linnade kaupa
+   ORDER BY kadunud_kliendid DESC;
+   ```
+      * **Kontrolltabel:**
+
+        - [x] Minu päring kasutab LEFT JOIN + WHERE IS NULL
+        - [x] Minu päring grupeerib (GROUP BY) linnade kaupa
+        - [x] Minu päring loeb kadunud klientide arvu igas linnas (COUNT)
+
+---
