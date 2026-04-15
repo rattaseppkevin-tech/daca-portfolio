@@ -159,10 +159,10 @@
    GROUP BY c.city                         -- Grupeerime linnade kaupa
    ORDER BY kadunud_kliendid DESC;
    ```
-      * **Kontrolltabel:**
+  * **Kontrolltabel:**
 
-        - [x] Minu päring kasutab LEFT JOIN + WHERE IS NULL
-        - [x] Minu päring grupeerib (GROUP BY) linnade kaupa
-        - [x] Minu päring loeb kadunud klientide arvu igas linnas (COUNT)
+    - [x] Minu päring kasutab LEFT JOIN + WHERE IS NULL
+    - [x] Minu päring grupeerib (GROUP BY) linnade kaupa
+    - [x] Minu päring loeb kadunud klientide arvu igas linnas (COUNT)
 
 ---
