@@ -166,3 +166,87 @@
     - [x] Minu päring loeb kadunud klientide arvu igas linnas (COUNT)
 
 ---
+
+## 3.3 Concrete Practice: Mitme tabeli JOIN harjutused
+
+### Harjutus 3A: Shu — järgi malli (10 min)
+
+* **Ülesanne: Kopeeri ja käivita — ühenda 3 tabelit, et näha klient + tellimus + toode:**
+   
+   ```sql
+   -- 3 tabeli JOIN: kes ostis mida?
+   SELECT
+      c.first_name || ' ' || c.last_name AS klient,
+      c.city AS linn,
+      s.sale_date AS müügi_kuupäev,
+      p.product_name AS toode,
+      p.category AS kategooria,
+      s.quantity AS kogus,
+      s.unit_price AS ühikuhind,
+      s.total_price AS rea_summa
+   FROM sales s
+   INNER JOIN customers c ON s.customer_id = c.customer_id
+   INNER JOIN products p ON s.product_id = p.product_id
+   ORDER BY rea_summa DESC
+   LIMIT 20;
+   ```
+ 
+   * Milline toode on kõige suurema rea summaga?
+      > Õhuline sünteetiline sporditossud.
+   * Millisest linnast on see klient?
+      > Valgas.
+   * Millises kategoorias on enim TOP 20 tooteid?
+      > Jalanõud.
+
+### Harjutus 3B: Ha — Anna raport
+
+* **Ülesanne: Anna tahab teada: "Millised tootekategooriad müüvad igas linnas kõige rohkem?" Kirjuta ise päring, mis ühendab 3+ tabelit ja grupeerib tulemused.**
+
+   ```sql
+   SELECT
+      p.category,
+      c.city,
+      sum(s.total_price) AS kogumüük
+   FROM sales s
+   INNER JOIN customers c ON s.customer_id = c.customer_id
+   INNER JOIN products p ON s.product_id = p.product_id
+   GROUP BY c.city, p.category
+   ORDER BY kogumüük DESC;
+   ```
+
+   * Milline linn + kategooria kombinatsioon on kõige kasumlikum?
+      > Top 1 on Tallinnas jalanõude müük.
+   * Kas Tallinna ja Tartu klientide kategooriaeelistused erinevad?
+      > Ei müüakse ikkagi üsna samu asju.
+   * Mida Anna saaks selle info põhjal turunduses teha?
+      > Anna saab suunata suurema osa reklaamieelarvest jalanõude kampaaniatele Tallinnas.
+
+### Harjutus 3C: Rakendus — avatud ülesanne
+
+* **Ülesanne: Mõtle äriküsimusele, mis vajab 3+ tabeli ühendamist. Kirjuta päring ja analüüsi tulemust.**
+
+   ```sql
+   SELECT 
+      c.first_name || ' ' || c.last_name AS klient,
+      c.city AS linn,
+      p.category AS kategooria,
+      MAX(p.retail_price) AS kalleim_toode_tellimuses,
+      COUNT(p.product_id) AS tooteid_tellimuses
+   FROM sales s
+   INNER JOIN customers c ON s.customer_id = c.customer_id
+   INNER JOIN products p ON s.product_id = p.product_id
+   GROUP BY 
+      s.sale_id, c.first_name, c.last_name, c.city, p.category
+   ORDER BY 
+      kalleim_toode_tellimuses DESC;
+   ```
+
+   * **Kontrolltabel:**
+
+    - [x] Minu päring ühendab vähemalt 3 tabelit
+    - [x] Iga JOIN kasutab õiget ühendavat veergu
+    - [x] Ma oskan seletada, mida tulemus äriliselt tähendab
+
+---
+
+### Concrete Practice: Integreeriv harjutus — Anna kampaaniaplaan

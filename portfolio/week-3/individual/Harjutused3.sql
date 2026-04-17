@@ -18,3 +18,4 @@ LEFT JOIN sales s ON c.customer_id = s.customer_id
 WHERE s.sale_id IS NULL                 -- Ainult need, kellel pole müüke
 GROUP BY c.city                         -- Grupeerime linnade kaupa
 ORDER BY kadunud_kliendid DESC;
+
