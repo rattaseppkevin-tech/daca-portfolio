@@ -193,4 +193,36 @@
 
 * **Ülesanne: Kasuta ROW_NUMBER() funktsiooni, et leida iga kategooria TOP 3 toodet müüdud koguse järgi.**
 
+    ```sql
+    WITH toodete_myyk AS (
+        SELECT 
+            p.category, 
+            p.product_name, 
+            SUM(s.quantity) AS kogus,
+            ROW_NUMBER() OVER (PARTITION BY p.category ORDER BY SUM(s.quantity) DESC) AS edetabeli_koht
+        FROM products p
+        JOIN sales s ON p.product_id = s.product_id
+        GROUP BY p.category, p.product_name
+    )
+    SELECT 
+        category, 
+        product_name, 
+        kogus, 
+        edetabeli_koht
+    FROM toodete_myyk 
+    WHERE edetabeli_koht <= 3
+    ORDER BY category, edetabeli_koht;
+    ```
+
+    * **Kontrolltabel:**
+
+     - [x] CTE arvutab iga toote müügikoguse
+     - [x] ROW_NUMBER() partitsioneerib kategooria järgi
+     - [x] Lõpptulemus näitab ainult TOP 3 iga kategooria kohta
+     - [x] Ma oskan seletada, miks PARTITION BY on vajalik (vs ilma selleta)
+
 ---
+
+### Concrete Practice: Integreeriv harjutus — CEO Raport
+
+* **Ülesanne: Kirjuta üks CTE-põhine päring, mis annab Kristile ülevaate TOP 5 linnast koos igakuise trendiga.**

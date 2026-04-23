@@ -17,3 +17,22 @@ SELECT
     ) AS kasv_protsent
 FROM kuu_myyk
 ORDER BY kuu;
+
+WITH toodete_myyk AS (
+    SELECT 
+        p.category, 
+        p.product_name, 
+        SUM(s.quantity) AS kogus,
+        ROW_NUMBER() OVER (PARTITION BY p.category ORDER BY SUM(s.quantity) DESC) AS edetabeli_koht
+    FROM products p
+    JOIN sales s ON p.product_id = s.product_id
+    GROUP BY p.category, p.product_name
+)
+SELECT 
+    category, 
+    product_name, 
+    kogus, 
+    edetabeli_koht
+FROM toodete_myyk 
+WHERE edetabeli_koht <= 3
+ORDER BY category, edetabeli_koht;
