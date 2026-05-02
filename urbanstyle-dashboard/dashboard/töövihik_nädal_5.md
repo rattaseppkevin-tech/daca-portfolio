@@ -76,26 +76,28 @@
 
 * **Ülesanne: Vaata alltoodud dashboard'i paigutust ja vasta küsimustele.**
 
-┌─────────────────────────────────────────────────────┐
-│  UrbanStyle Investor Dashboard — Q4 2024            │
-├──────────┬──────────┬──────────┬────────────────────┤
-│ €305K    │ 2 500    │ €32      │ +15% kasv          │
-│ Käive    │ Kliendid │ Kesk.tell│ vs Q3              │
-├──────────┴──────────┴──────────┴────────────────────┤
-│                                                     │
-│  Müügitulu trend (joondiagramm, Jan-Dec)            │
-│  Y: EUR, X: Kuud                                    │
-│                                                     │
-├──────────────────────────┬──────────────────────────┤
-│  TOP 5 toodet            │  Müük linnade lõikes     │
-│  (horisontaalne tulp)    │  (sektordiagramm)        │
-│                          │  Tallinn 42%             │
-│  Denim Jacket  ████ 45K  │  Online  28%             │
-│  Sneakers      ███  35K  │  Tartu   18%             │
-│  Hoodie        ██   28K  │  Pärnu   12%             │
-├──────────────────────────┴──────────────────────────┤
-│  [ Periood ▼ ]  [ Linn ▼ ]  [ Kategooria ▼ ]        │
-└─────────────────────────────────────────────────────┘
+### UrbanStyle Investor Dashboard — Q4 2024
+
+| **Käive** | **Kliendid** | **Kesk. tellimus** | **Kasv (vs Q3)** |
+| :--- | :--- | :--- | :--- |
+| €305K | 2 500 | €32 | **+15%** |
+
+---
+
+### 📈 Müügitulu trend (Jan-Dec)
+*Siia tuleb joondiagramm: Y-telg (EUR), X-telg (Kuud)*
+
+---
+
+| TOP 5 toodet (Käibe järgi) | Müük linnade lõikes |
+| :--- | :--- |
+| 1. **Denim Jacket** (€45K) | 📍 **Tallinn**: 42% |
+| 2. **Sneakers** (€35K) | 💻 **Online**: 28% |
+| 3. **Hoodie** (€28K) | 📍 **Tartu**: 18% |
+| 4. **Street Tee** (€21K) | 📍 **Pärnu**: 12% |
+
+---
+**Filtrid:** `[ Periood ▾ ]` `[ Linn ▾ ]` `[ Kategooria ▾ ]`
 
 * **Küsimused:**
 
