@@ -82,12 +82,8 @@
 | :--- | :--- | :--- | :--- |
 | €305K | 2 500 | €32 | **+15%** |
 
----
-
 ### 📈 Müügitulu trend (Jan-Dec)
 *Siia tuleb joondiagramm: Y-telg (EUR), X-telg (Kuud)*
-
----
 
 | TOP 5 toodet (Käibe järgi) | Müük linnade lõikes |
 | :--- | :--- |
