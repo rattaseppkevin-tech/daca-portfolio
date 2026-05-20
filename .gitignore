@@ -1,3 +1,4 @@
 *.json
 DACA-Python/test_supabase.py
 DACA-Python/.env
+portfolio/week-8/.env
