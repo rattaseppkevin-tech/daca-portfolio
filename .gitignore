@@ -1,4 +1,4 @@
-*.json
-DACA-Python/test_supabase.py
 DACA-Python/.env
-portfolio/week-8/.env
+.vscode/settings.json
+portfolio/week-8/individual/.env
+portfolio/week-8/team/.env
