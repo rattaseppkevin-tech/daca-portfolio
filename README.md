@@ -14,6 +14,6 @@ Liitusin DACA programmiga, et teha täielik karjääripööre andmeanalüüsi va
 | 2 | SQL Cleaning | Lõpetatud |
 | 3 | SQL JOINs | Lõpetatud |
 | 4 | SQL Aggregation | Lõpetatud |
-| 5-6 | Visualiseerimine | Käimas |
-| 7-8 | Python | Tulemas |
-| 9-10 | Portfoolio + Karjäär | Tulemas |
+| 5-6 | Visualiseerimine | Lõpetatud |
+| 7-8 | Python | Lõpetatud |
+| 9-10 | Portfoolio + Karjäär | Käimas |
