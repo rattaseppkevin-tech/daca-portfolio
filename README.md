@@ -51,5 +51,5 @@ An intensive 11-week Data Analyst Career Accelerator (DACA) portfolio focused on
 * **Focus:** Market integration and professional positioning.
 * **Deliverables:** Translating technical outcomes from the UrbanStyle database into high-impact, STAR-method metrics. Optimizing this portfolio, CV, and LinkedIn footprint to match exact employer requirements for modern data analysis roles.
 
-### Week 10-11: Advanced Analytics & Graduation
+### Week 10: Advanced Analytics & Graduation
 * **Focus:** Capstone finalization, portfolio auditing, and program completion.
