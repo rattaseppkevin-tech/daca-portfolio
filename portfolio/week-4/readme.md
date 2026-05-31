@@ -1,3 +1,5 @@
+# DACA Week 4: SQL Aggregation — Transforming Raw Data into Business Insights
+
 #### Business Problem
 UrbanStyle's leadership needed to condense 1,247 individual sales records into a handful of key performance indicators (KPIs) for the CEO. Specifically, the project aimed to track monthly sales trends, identify VIP customer segments, and investigate a 25-unit inventory discrepancy reported at the Tartu store.
 
@@ -29,4 +31,3 @@ The project moved beyond simple data retrieval to advanced analytical structurin
 *   **Grouping Rules:** Mastered the requirement that every non-aggregated column in a `SELECT` statement must be included in the `GROUP BY` clause to avoid errors.
 
 #### AI Usage
-AI was utilized to debug specific PostgreSQL errors, such as the "column must appear in GROUP BY clause" message, and to refine the syntax for complex Window Functions like `LAG()` and `PARTITION BY`.
