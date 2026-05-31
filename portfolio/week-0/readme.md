@@ -1,41 +1,39 @@
-# Week 0: Onboarding & Workflow Architecture
+# DACA Portfolio — Week 0: Environment Setup
+
+> Data Analyst Career Accelerator | Ettevõtluskeskus OÜ | May 2026
+
+Set up a professional data analyst workflow — cloud database, version control, and a connected development environment. Data lives in the cloud, code is tracked, results are shareable.
 
 ---
 
-## 🎯 Business Context
-UrbanStyle Ltd. (a fashion e-commerce brand with 45 employees across Tallinn, Tartu, and Pärnu) was facing severe operational risk due to broken Excel workflows, duplicate data rows, and reporting discrepancies. 
+### 🛠️ Tools Configured
 
-The goal of this onboarding week was to **eliminate spreadsheet-dependency** by architecting a modern, scalable data ecosystem where data resides securely in the cloud, code changes are systematically tracked, and workflows are fully integrated[cite: 1].
-
----
-
-## 🛠️ Technical Stack Configured
-| Tool | Infrastructure Role | Strategic Advantage |
-| :--- | :--- | :--- |
-| **Supabase** | Cloud Data Tier | Deployed a PostgreSQL database instance in the `eu-central-1` region[cite: 1]. |
-| **Git & GitHub** | Version Control | Set up local system tracking connected to the remote `daca-portfolio` repository[cite: 1]. |
-| **VS Code** | Core IDE | Custom environments configured with Python, SQLTools, and GitLens[cite: 1]. |
-| **Power BI** | Business Intelligence | Installed locally to ingest upcoming database schemas for executive dashboards[cite: 1]. |
+| Tool | Purpose | Status |
+|------|---------|--------|
+| Supabase | Cloud PostgreSQL database | ✅ |
+| GitHub | Version control + professional portfolio | ✅ |
+| VS Code | Code editor with SQLTools connection | ✅ |
+| Power BI / Plotly+Streamlit | Data visualization | ✅ |
 
 ---
 
-## 🚀 Key Deliverables & "Vertical Slice" Validation
+### 📚 What This Week Introduced
 
-To verify that the entire analytical pipeline communicates flawlessly, I successfully built and executed an end-to-end **Vertical Solution**[cite: 1]:
+Week 0 went beyond tool installation — it explained the *why* behind each decision. The core argument was that Excel breaks down once a team grows: multiple people editing the same file creates version chaos and data loss. A cloud database with a single source of truth solves this.
 
-1. **Database Schema Creation**: Wrote and deployed a relational structure (`team_members`) enforcing `SERIAL PRIMARY KEY` and automatic `TIMESTAMP` constraints[cite: 1].
-2. **Data Ingestion**: Populated the cloud database with internal organizational roles (CEO, IT Director, Marketing Lead, and myself as the Data Analyst) via native SQL commands[cite: 1].
-3. **Cross-Environment Verification**: Connected local VS Code environments securely via SSL to query the Supabase cluster and verified live state alignment[cite: 1].
-4. **Codebase Synchronization**: Staged, committed, and pushed the pipeline script to GitHub to establish an immutable engineering log[cite: 1].
+On the code side, the week introduced basic SQL — enough to create tables, insert records, and query results. Git was framed not as a backup tool but as a professional habit: every commit is a documented save point, and a public GitHub repository doubles as a living portfolio that employers can review before any interview.
+
+The week closed with the concept of a **vertical slice** — connecting all three tools into one unbroken workflow. Writing a SQL file in VS Code, running it against Supabase, and pushing it to GitHub is exactly the loop a data analyst repeats on the job every day.
 
 ---
 
-# Week 0 Group
+# Group Work
 
 ---
 
 ## 👥 Team Information
-* **Data Analyst Team Members:** Kevin, Eike, Nikita, Krista, Egle
+* **Department:** Product Analytics Department
+* **Data Analyst Team Members:** Kevin, Eike, Krista, Egle
 
 ---
 
