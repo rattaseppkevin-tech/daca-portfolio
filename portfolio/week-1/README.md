@@ -1,32 +1,40 @@
-# DACA Portfolio — Week 1: SQL Basics
+# DACA Week 1: SQL Fundamentals — UrbanStyle Audit
 
-> Data Analyst Career Accelerator | Ettevõtluskeskus OÜ | March 2026
+#### Business Problem
+UrbanStyle IT Director Toomas Kask discovered over 5,000 duplicate records in the sales database, making company reports unreliable. The goal of this project was to perform an urgent audit of the data to quantify duplicates, identify missing values, and report on sales extremes.
 
-First week working with real data. Loaded UrbanStyle's actual sales, customer and product records into Supabase and used SQL to investigate a reported data quality issue — over 5,000 duplicate rows in the sales table.
+#### Approach
+The audit was conducted using a "Read-Only" mindset to explore the data without altering it. 
+*   **Data Retrieval:** Used `SELECT` and `FROM` to isolate specific columns like customer IDs and price totals.
+*   **Filtering:** Applied `WHERE` clauses with comparison operators and `IS NULL` logic to find suspicious or missing data.
+*   **Aggregation:** Used `COUNT(*)` vs. `COUNT(DISTINCT)` to mathematically prove the existence of duplicates.
+*   **Environment:** Set up the UrbanStyle database in Supabase, importing ~18,000 records across products, customers, and sales tables.
 
----
+#### Key Findings
+*   **Duplicate Crisis:** Confirmed exactly 5,116 duplicate rows in the sales table (15,234 total rows vs. 10,118 unique IDs).
+*   **Data Anomalies:** Identified "suspicious" rows where `total_price` was 0 or negative, and several orders where the `customer_id` was completely missing (NULL).
+*   **Format Issues:** Approximately 3% of sales dates were in an inconsistent format (DD/MM/YYYY vs. YYYY-MM-DD), requiring a staging table for safe import.
+*   **Customer Integrity:** Found duplicate email entries in the customers table, indicating further data quality issues.
 
-### 🗄️ Dataset Loaded
+#### Technical Stack
+*   **SQL (PostgreSQL):** Used for all data auditing and filtering.
+*   **Supabase:** The primary database platform and SQL editor.
+*   **Google Drive:** Source for the UrbanStyle CSV datasets.
 
-| Table | Records | Status |
-|-------|---------|--------|
-| products | ~350 | ✅ |
-| customers | ~3,150 | ✅ |
-| sales | 15,234 | ✅ |
+#### How to Run
+1.  **Database Setup:** Run the `urbanstyle_schema.sql` script in the Supabase SQL Editor to create the table structures.
+2.  **Data Import:** Import CSV files in the mandatory order: `products` -> `customers` -> `sales`.
+3.  **Date Handling:** For the sales table, use a temporary `sales_import` staging table to convert inconsistent date strings into proper DATE types.
+4.  **Audit Queries:** Execute the provided diagnostic scripts to verify row counts (e.g., `SELECT COUNT(*) FROM sales`).
 
----
+#### Lessons Learned
+*   **NULL Comparison:** Learned that `column = NULL` never works; `IS NULL` is the only way to find missing data because NULL is a state, not a value.
+*   **Arithmetic Risks:** Discovered that any math operation involving a NULL (e.g., `100 + NULL`) results in NULL, which explains why many UrbanStyle reports were failing.
+*   **The Power of DISTINCT:** Understanding the difference between `COUNT(*)` (all rows) and `COUNT(DISTINCT column)` is the fastest way to identify data integrity leaks.
 
-### 📚 What This Week Introduced
+#### AI Usage
+AI was used to troubleshoot Supabase import errors (specifically UTF-8 BOM issues) and to explain the logic behind `CASE` statements used during the complex sales data import process.
 
-Week 1 was about learning to *read* data before drawing any conclusions. The focus was on three SQL building blocks: selecting and sorting records, filtering by conditions, and counting both total and unique values.
-
-**SELECT and FROM** established the foundation — choosing specific columns from a table rather than dumping everything at once. ORDER BY and LIMIT made large datasets manageable by controlling what gets shown and in what order.
-
-**WHERE** introduced filtering: narrowing results by value ranges, date periods, text patterns and null checks. The distinction between IS NULL and = NULL turned out to be one of the more counterintuitive moments — NULL is not a value, so it cannot be compared with an equals sign.
-
-**DISTINCT and COUNT** were the tools that answered the week's main question. Comparing COUNT(\*) against COUNT(DISTINCT sale\_id) revealed the exact duplicate count: 15,234 total rows versus 10,118 unique sale IDs, giving 5,116 duplicates. The same approach applied to the customers table uncovered duplicate email addresses — a separate data quality problem to address next week.
-
-The week closed with a structured report answering four questions from the IT director: exact duplicate count, null values, largest and smallest transactions, and suspicious zero-value rows.
 
 ---
 

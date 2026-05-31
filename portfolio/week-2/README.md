@@ -1,63 +1,38 @@
-# DACA Portfolio — Week 2: SQL Cleaning
+# DACA Week 2: SQL Data Cleaning — UrbanStyle Case Study
 
-> Data Analyst Career Accelerator | Ettevõtluskeskus OÜ | March 2026
+#### Business Problem
+UrbanStyle's database was in "chaos," containing duplicate rows, missing (NULL) values, and inconsistent formatting. These issues led to a **€1.4 million error** in quarterly sales reports, where €4.2 million was reported instead of the actual €2.8 million.
 
----
+#### Approach
+The project followed a strict workflow: **Identify, Document, Test, and then Fix**. 
+*   **Duplicates:** Identified using `GROUP BY + HAVING` logic and isolated using the `ROW_NUMBER()` window function to distinguish "originals" from copies.
+*   **NULL Values:** Detected using `IS NULL` and managed with `COALESCE()` to provide default replacements for missing data.
+*   **Standardization:** Unified text fields with `TRIM()` and `INITCAP()` to fix casing and spacing, while date formats were unified using `TO_CHAR()`.
 
-## Overview
+#### Key Findings
+*   **Financial Impact:** Duplicates inflated sales figures by approximately **33%**, highlighting the critical need for data integrity.
+*   **Data Completeness:** A significant number of customer records lacked names or contact info, which hindered effective marketing efforts.
+*   **Regional Fragmentation:** Inconsistent city entries (e.g., "Tallinn" vs. "tallinn") caused regional sales reports to be split incorrectly.
 
-This week focused on improving data quality within the UrbanStyle dataset. I analyzed sales and customer data to identify duplicates, missing values, and formatting inconsistencies that could impact reporting and business decisions.
+#### Technical Stack
+*   **SQL (PostgreSQL):** The core tool used for auditing and data transformation.
+*   **Supabase:** The project environment for executing SQL queries against the UrbanStyle database.
 
-## What I Did
+#### How to Run
+1.  Log into the **Supabase** project and navigate to the **SQL Editor**.
+2.  Run diagnostic scripts to identify current data anomalies, such as duplicates and NULL values.
+3.  **Important:** Always create a backup table using `CREATE TABLE ... AS SELECT` before performing any `DELETE` or `UPDATE` operations, as these changes are irreversible.
 
-- Investigated duplicate records and their effect on business metrics.
-- Analyzed missing customer information and data completeness.
-- Validated date values and checked data consistency.
-- Applied SQL data-cleaning and validation techniques.
-- Contributed to the team data quality assessment and reporting process.
+#### Lessons Learned
+*   **The Danger of NULLs:** Any arithmetic operation involving a NULL value results in NULL (e.g., `100 + NULL = NULL`), which can compromise the accuracy of an entire financial report.
+*   **Safety Protocols:** There is no "undo" button in SQL production environments; thorough documentation and testing on copies are mandatory professional steps.
 
-## Key Findings
-
-- Detected over 5,000 duplicate records in the sales dataset.
-- Identified missing customer information that reduced data reliability.
-- Found invalid date values requiring correction before analysis.
-- Confirmed that data quality issues can significantly affect reporting accuracy.
-
-## SQL Concepts & Functions
-
-- GROUP BY
-- HAVING
-- ROW_NUMBER()
-- COUNT()
-- DISTINCT
-- IS NULL / IS NOT NULL
-- COALESCE()
-- NULLIF()
-- CASE WHEN
-- CAST()
-- TO_DATE()
-- TO_CHAR()
-- TRIM()
-- UPPER()
-- LOWER()
-- INITCAP()
-
-## Key Learnings
-
-- Understanding the impact of poor data quality on business reporting.
-- Identifying duplicates, NULL values, and formatting issues using SQL.
-- Applying structured data-cleaning and validation workflows.
-- Recognizing the importance of verifying data before analysis.
-
-## AI Usage
-
-Used AI to review SQL queries, troubleshoot issues, and strengthen my understanding of data-cleaning concepts and SQL best practices.
+#### AI Usage
+AI was utilized to refine the complex `ROW_NUMBER() OVER (PARTITION BY ...)` syntax and to troubleshoot text-cleaning logic for handling inconsistent regional entries.
 
 ---
 
 # Group Work
-
-
 
 ## Quality Control and Cross-Validation
 
