@@ -1,6 +1,6 @@
 # DACA Portfolio — Week 0: Environment Setup
 
-> Data Analyst Career Accelerator | Ettevõtluskeskus OÜ | May 2026
+> Data Analyst Career Accelerator | Ettevõtluskeskus OÜ | March 2026
 
 Set up a professional data analyst workflow — cloud database, version control, and a connected development environment. Data lives in the cloud, code is tracked, results are shareable.
 
@@ -35,14 +35,11 @@ The week closed with the concept of a **vertical slice** — connecting all thre
 * **Department:** Product Analytics Department
 * **Data Analyst Team Members:** Kevin, Eike, Krista, Egle
 
----
-
 ## 🛠️ Shared Infrastructure Setup
 * **GitHub Organization:** Initialized a centralized, shared organization to manage collaborative version control and team repositories.
 * **Supabase (PostgreSQL):** Deployed a shared cloud database instance to serve as the single source of truth for team-wide query execution.
 * **NotebookLM:** Configured a shared workspace environment for team knowledge management and document analysis.
 
----
 
 ## 📈 Key Deliverables & Observations
 * **Ecosystem Integration:** Successfully built and cross-connected the cloud databases with team local IDE environments via secure SSL configurations.
