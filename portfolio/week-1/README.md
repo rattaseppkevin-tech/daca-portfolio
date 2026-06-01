@@ -47,13 +47,13 @@ AI was used to troubleshoot Supabase import errors (specifically UTF-8 BOM issue
 * **Data Analyst Team Members:** Kevin, Eike, Krista, Egle
 
 
-## 🛠️ What I Did
+## What I Did
 * **SQL Queries:** Analyzed the `sales` table and executed various queries.
 * **Key Finding:** Discovered a major discrepancy in the data—there are **10,118 unique sales**, but **15,234 total rows**. This means we have over 5,000 duplicates that require cleaning.
 * **Teamwork:** Contributed to the team by writing and executing SQL queries regarding the `sales` table.
 
 
-## 💡 Key Learnings
+## Key Learnings
 * Thorough data cleaning is critical.
 * Precise table filtering is essential.
 
@@ -63,5 +63,5 @@ AI was used to troubleshoot Supabase import errors (specifically UTF-8 BOM issue
 * `week1_results_screenshot.png` — [Workbook Log Screenshot](https://github.com/rattaseppkevin-tech/daca-portfolio/blob/main/portfolio/week-1/Individual/Harjutused%20ja%20P%C3%A4ringud/TooVihik.md)
 
 
-## 👥 Team Collaboration
+## Team Collaboration
 * [Team Output (Week 1)](https://github.com/rattaseppkevin-tech/urbanstyle-TOOTE-grupp/blob/main/v%C3%A4ljund_w1.md)
