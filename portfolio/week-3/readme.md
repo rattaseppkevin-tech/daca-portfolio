@@ -1,34 +1,38 @@
-# DACA Week 3: SQL JOINs — Relational Data Analysis
+# DACA Week 3: SQL JOINs — Connecting Data Islands for Marketing Intelligence
 
 #### Business Problem
-Marketing Manager Anna Mets needed to bridge "data islands" within the UrbanStyle database. While the sales table was clean, it lacked context regarding who the customers were and what specific products they preferred. The goal was to identify the top 20 customers, analyze regional product performance, and find "lost" customers who registered but never made a purchase.
+UrbanStyle's data was scattered across isolated "islands" (sales, customers, and products tables), making it impossible to answer complex business questions. Marketing Manager Anna Mets needed to identify the Top 20 customers, analyze which products they buy, and find "lost" customers who registered but never made a purchase. The goal was to bridge these tables to provide the insights necessary for a high-impact marketing campaign.
 
 #### Approach
-The project involved connecting multiple tables to create a unified view of the business:
-*   **INNER JOIN:** Used to combine sales with customer profiles and product details where matches existed in both tables.
-*   **LEFT JOIN + WHERE IS NULL:** Implemented this diagnostic pattern to identify inactive customers and stagnant inventory (products with zero sales).
-*   **Multi-Table Joins:** Linked three tables (Sales + Customers + Products) simultaneously to build comprehensive marketing reports.
-*   **Table Aliasing:** Applied short aliases (s, c, p) to maintain query readability and structure.
+The project utilized relational algebra to unify the database and extract strategic value:
+*   **Data Preparation:** Before joining, the production database was cleaned to remove duplicates (reducing sales records to ~10,118) and unify city names (standardizing 50+ variations down to 12).
+*   **INNER JOIN:** Used to connect sales transactions with customer profiles and product details where matches existed in both tables.
+*   **LEFT JOIN + WHERE IS NULL:** Implemented this "Anti-Join" pattern to mathematically identify gaps in the sales funnel, such as customers with zero purchases and products with zero sales.
+*   **Multi-Table Integration:** Developed 3+ table queries (Sales + Customers + Products) to create a holistic view of the customer journey from registration to checkout.
+*   **Table Aliasing:** Applied standard aliases (s, c, p) to maintain readable and professional code structures.
 
-#### Key Findings
-*   **Customer Engagement:** Successfully separated "active" customers from those who registered but haven't engaged, allowing for targeted re-engagement campaigns.
-*   **Inventory Insights:** Identified specific product categories that have never been sold, highlighting capital tied up in unsold stock.
-*   **Regional Trends:** Mapped sales performance to specific cities, revealing distinct category preferences between Tallinn and Tartu.
-*   **Data Integrity:** Confirmed that multi-table connections are only reliable when the underlying "Foreign Key" links (customer_id, product_id) are accurate.
+#### Key Insights
+*   **Standardization Success:** By unifying city names, regional reporting became accurate, confirming exactly 12 unique service locations across Estonia.
+*   **Lost Opportunity:** Identified a specific segment of "lost customers" who are registered but inactive, representing a significant untapped marketing potential.
+*   **Revenue Concentration:** Successfully mapped the TOP 20 customers, identifying that a small percentage of users contribute to a disproportionate amount of total revenue.
+*   **Inventory Efficiency:** Discovered capital tied up in "stagnant" products—items present in the catalog but never sold—allowing for data-driven decisions on discounts or liquidation.
+*   **Regional Trends:** Mapped sales performance by city, revealing distinct category preferences between the Tallinn and Tartu markets.
 
 #### Technical Stack
-*   **SQL (PostgreSQL):** Primary language for relational data querying and aggregation.
-*   **Supabase:** The cloud-based SQL environment used to manage the UrbanStyle database schema.
+*   **SQL (PostgreSQL):** The primary language for relational auditing and data transformation.
+*   **Supabase:** The cloud-based SQL environment used to execute JOIN operations against the UrbanStyle database.
+*   **GitHub:** Used for version control and portfolio documentation.
 
 #### How to Run
-1.  **Preparation:** Apply the Week 2 cleaning scripts to the `sales` table to ensure the audit is based on unique, valid records.
-2.  **Standardization:** Run the `UPDATE` script on the `customers` table to unify city names using `INITCAP(TRIM(city))` to prevent fragmented reporting.
-3.  **Analysis:** Execute the multi-table JOIN scripts in the Supabase SQL Editor to generate the TOP 20 customer list and the "Lost Customer" audit.
+1.  **Preparation:** Run the provided cleaning script in the Supabase SQL Editor to remove duplicates and unify city names to ensure report accuracy.
+2.  **Audit Queries:** Execute the `INNER JOIN` scripts to verify the connection between sales and customer IDs.
+3.  **Gap Analysis:** Run the `LEFT JOIN` script with the `WHERE s.sale_id IS NULL` filter to generate the "Lost Customer" report for the marketing team.
+4.  **Full Report:** Execute the multi-table JOIN script to generate a complete view of client names, their order dates, and the specific products they purchased.
 
-#### Lessons Learned
-*   **Relational Logic:** Mastered the fundamental difference between `INNER JOIN` (showing only matches) and `LEFT JOIN` (preserving all records from the primary table).
-*   **The "IS NULL" Pattern:** Discovered how to use `WHERE IS NULL` on a joined table to mathematically identify gaps in the sales funnel.
-*   **Query Layering:** Learned that complex business questions are solved by "building" queries one layer at a time—starting with a base table and adding context through successive JOINs.
+#### Lessons Learned & Challenges
+*   **Relational Logic:** Mastered the fundamental difference between `INNER JOIN` (matches only) and `LEFT JOIN` (preserves all primary records), which is critical for avoiding "hidden" data loss in reports.
+*   **Key Connectivity:** Realized that without properly linked Primary and Foreign Keys, data remains isolated and business questions remain unanswered.
+*   **The Power of NULL:** Learned to use `NULL` as a diagnostic tool rather than an error—specifically how it helps identify customers who haven't moved through the sales funnel.
 
 #### AI Usage
-AI was used to troubleshoot complex multi-table JOIN syntax and to clarify the logic of why the `WHERE IS NULL` condition must be applied to the "right" table in a `LEFT JOIN` to find missing data.
+AI was utilized to troubleshoot complex multi-table JOIN syntax and to perform "So What?" tests on the findings to ensure the data stories were actionable for executive stakeholders.

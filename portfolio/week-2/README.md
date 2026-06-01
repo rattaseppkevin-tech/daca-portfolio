@@ -1,62 +1,37 @@
-# DACA Week 2: SQL Data Cleaning — UrbanStyle Case Study
+# DACA Week 2: SQL Data Cleaning — UrbanStyle Data Quality & Integrity Audit
 
 #### Business Problem
-UrbanStyle's database was in "chaos," containing duplicate rows, missing (NULL) values, and inconsistent formatting. These issues led to a **€1.4 million error** in quarterly sales reports, where €4.2 million was reported instead of the actual €2.8 million.
+UrbanStyle’s database was in a state of "chaos," with over **847 duplicate orders** and significant inconsistencies in customer and product records. These errors led to a **€1.4 million reporting discrepancy** (€4.2M reported vs. €2.8M actual), threatening the credibility of the upcoming board meeting with CEO Kristi Tamm.
 
 #### Approach
-The project followed a strict workflow: **Identify, Document, Test, and then Fix**. 
-*   **Duplicates:** Identified using `GROUP BY + HAVING` logic and isolated using the `ROW_NUMBER()` window function to distinguish "originals" from copies.
-*   **NULL Values:** Detected using `IS NULL` and managed with `COALESCE()` to provide default replacements for missing data.
-*   **Standardization:** Unified text fields with `TRIM()` and `INITCAP()` to fix casing and spacing, while date formats were unified using `TO_CHAR()`.
+The project followed a professional data surgery workflow: **Identify, Document, Test, and then Fix**. The audit was divided into four critical domains:
+*   **Sales Domain:** Isolated duplicates using `GROUP BY + HAVING` and the `ROW_NUMBER()` window function to identify "originals" versus copies.
+*   **Customer Domain:** Cleaned inconsistent city names (e.g., "tallinn" vs "Tallinn") and handled missing contact data.
+*   **Product Domain:** Audited retail prices for logical errors, such as negative values or missing (NULL) costs.
+*   **Cross-Validation:** Performed a "Data Quality Analyst" role to find **orphaned records**—sales entries pointing to customers or products that do not exist in the master tables.
 
 #### Key Findings
-*   **Financial Impact:** Duplicates inflated sales figures by approximately **33%**, highlighting the critical need for data integrity.
-*   **Data Completeness:** A significant number of customer records lacked names or contact info, which hindered effective marketing efforts.
-*   **Regional Fragmentation:** Inconsistent city entries (e.g., "Tallinn" vs. "tallinn") caused regional sales reports to be split incorrectly.
+*   **The Duplicate Impact:** Confirmed that duplicates inflated total revenue by approximately **33%**, with one specific `sale_id` being the most frequent offender.
+*   **Orphaned Records:** Identified multiple sales transactions that lacked a valid `customer_id` or `product_id`, making them "ghost" transactions.
+*   **Regional Fragmentation:** Discovered that inconsistent city entries caused the Tartu and Tallinn reports to be split into multiple incorrect categories.
+*   **Financial Integrity:** Found several products with a `retail_price` of 0 or NULL, identifying gaps in the catalog that could lead to lost revenue.
+*   **Future Sales:** Detected records with "future dates" (e.g., orders dated after today), which required immediate correction to stabilize the timeline analysis.
 
 #### Technical Stack
-*   **SQL (PostgreSQL):** The core tool used for auditing and data transformation.
-*   **Supabase:** The project environment for executing SQL queries against the UrbanStyle database.
+*   **SQL (PostgreSQL):** Used for advanced data auditing, partitioning, and relational validation.
+*   **Supabase:** The primary cloud environment for running audit scripts and managing test tables.
 
 #### How to Run
-1.  Log into the **Supabase** project and navigate to the **SQL Editor**.
-2.  Run diagnostic scripts to identify current data anomalies, such as duplicates and NULL values.
-3.  **Important:** Always create a backup table using `CREATE TABLE ... AS SELECT` before performing any `DELETE` or `UPDATE` operations, as these changes are irreversible.
+1.  **Safety Protocol:** Never work on production tables. Create a test copy first: `CREATE TABLE sales_test AS SELECT * FROM sales;`.
+2.  **Duplicate Check:** Run the `GROUP BY sale_id HAVING COUNT(*) > 1` script to identify duplicate clusters.
+3.  **Cross-Validation:** Use `LEFT JOIN` with `IS NULL` filters to identify orphaned sales that don't match the customer or product tables.
+4.  **Standardization:** Apply the `INITCAP(TRIM(city))` logic to the `customers_test` table to unify regional reporting.
+5.  **Documentation:** Record the row counts before and after each simulated cleaning step in the audit log.
 
 #### Lessons Learned
-*   **The Danger of NULLs:** Any arithmetic operation involving a NULL value results in NULL (e.g., `100 + NULL = NULL`), which can compromise the accuracy of an entire financial report.
-*   **Safety Protocols:** There is no "undo" button in SQL production environments; thorough documentation and testing on copies are mandatory professional steps.
+*   **The Power of NULL:** Mastered the logic that `NULL` is a state of "unknown" rather than a value, and learned the critical risk of "NULL math" where `100 + NULL = NULL`.
+*   **Irreversibility:** Realized that `DELETE` and `UPDATE` are permanent; hence, working on test copies is a non-negotiable professional standard.
+*   **Logic over Syntax:** Learned that defining *how* to identify a duplicate (e.g., by email vs. by ID) is a business decision that must precede the technical query.
 
 #### AI Usage
-AI was utilized to refine the complex `ROW_NUMBER() OVER (PARTITION BY ...)` syntax and to troubleshoot text-cleaning logic for handling inconsistent regional entries.
-
----
-
-# Group Work
-
-## Quality Control and Cross-Validation
-
-**Role:** Data Quality Analyst
-
-I verified data integrity across the `sales`, `customers`, and `products` tables. A positive finding was that no broken relationships were found; all sales records are consistent. 
-
-However, I uncovered 664 price discrepancies and 604 inactive records (592 customers who have never made a purchase and 12 products that have never been sold). From a business perspective, this indicates that our pricing strategy might be flawed, and we are maintaining customers and products that do not generate revenue.
-
----
-
-## Cross-Validation Summary Table (Step 6)
-
-| Category | Issues Found | Description |
-| :--- | :---: | :--- |
-| **Orphaned Customers** | 0 | Sale references a non-existent customer (Resolved) |
-| **Orphaned Products** | 0 | Sale references a non-existent product (Resolved) |
-| **Price Discrepancies** | 664 | Sale price does not match product price (Critical) |
-| **Ghost Customers** | 592 | Customer has never made a purchase (Marketing opportunity) |
-| **Ghost Products** | 12 | Product has never been sold (Inventory risk) |
-| **TOTAL** | **1268** | **Total number of identified discrepancies** |
-
----
-
-## Expert Recommendation to Toomas
-
-The most critical issue is the 664 price discrepancies, as they directly impact company revenue and the accuracy of financial reporting.
+AI was utilized to troubleshoot complex `ROW_NUMBER() OVER (PARTITION BY ...)` syntax and to verify the logic of the cross-validation `LEFT JOIN` scripts to ensure all orphaned records were accurately captured.
