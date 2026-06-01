@@ -20,18 +20,4 @@ The audit was conducted using a systematic data exploration workflow:
 #### Technical Stack
 *   **SQL (PostgreSQL):** Used for all data auditing, filtering, and aggregation.
 *   **Supabase:** The primary database platform used for table schema setup and query execution.
-*   **Google Drive:** Source for the UrbanStyle CSV datasets.
 
-#### How to Run
-1.  **Schema Creation:** Run the `urbanstyle_schema.sql` script in the Supabase SQL Editor to establish the table structures.
-2.  **Ordered Data Import:** Import the CSV files in the mandatory sequence: `products` -> `customers` -> `sales` (to avoid Foreign Key constraint violations).
-3.  **Date Normalization:** For the sales table, use the `sales_import` staging table and a `CASE` statement to convert mixed date formats (DD/MM/YYYY and YYYY-MM-DD) into a unified DATE type.
-4.  **Audit Execution:** Run the provided diagnostic queries (e.g., `SELECT COUNT(*) FROM sales`) to verify row counts and data integrity.
-
-#### Lessons Learned
-*   **NULL vs. Zero:** Learned that `NULL` represents a "missing" state and cannot be compared using `=`, only via `IS NULL`. 
-*   **Safe Explorations:** Mastered the use of `LIMIT` and `ORDER BY` to find extremes (highest/lowest prices) without overloading the system.
-*   **Logical Order of Operations:** Discovered that SQL processes `WHERE` before `ORDER BY`, which is essential for filtering records before sorting them for executive reports.
-
-#### AI Usage
-AI was used to troubleshoot Supabase "Foreign Key violation" errors during the import process and to explain the `UNION ALL` syntax used to create the single-view "Data Landscape" summary table.
