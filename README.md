@@ -11,7 +11,7 @@ An intensive 11-week Data Analyst Career Accelerator (DACA) portfolio focused on
 
 ## 📈 Week-by-Week Project Breakdown
 
-### Week 0: Onboarding & Workflow Architecture
+### [Week 0: Onboarding & Workflow Architecture](https://github.com/rattaseppkevin-tech/daca-portfolio/tree/main/portfolio/week-0)
 * **Focus:** Environment setup and strategic onboarding. 
 * **Deliverables:** Configured VS Code, Python, Supabase, GitHub, and Power BI into a vertical workflow. Collaborated with the analytics department to draft a formal Team Charter and define business KPIs for UrbanStyle.
 
