@@ -1,6 +1,6 @@
 # DACA Portfolio — Kevin Rattasepp
 
-An intensive 11-week Data Analyst Career Accelerator (DACA) portfolio focused on turning raw data into strategic business outcomes. Throughout this program, I acted as a Data Analyst for the retail fashion brand **UrbanStyle Ltd**, building data infrastructure from scratch—moving from raw SQL database auditing to automated Python data pipelines and production-ready Power BI dashboards.
+An intensive 11-week Data Analyst Career Accelerator (DACA) portfolio focused on turning raw data into strategic business outcomes. Throughout this program, I acted as a Data Analyst for the retail fashion brand **UrbanStyle Ltd**, building data infrastructure from scratch moving from raw SQL database auditing to automated Python data pipelines and production-ready Power BI dashboards.
 
 ## 🛠️ Technical Stack
 * **Languages & Frameworks:** SQL (PostgreSQL), Python (Pandas, NumPy)
